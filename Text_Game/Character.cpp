@@ -23,7 +23,7 @@ void Character::DisplayStatus() {
 	cout << "공격력: " << Attack << endl;
 	cout << "경험치: " << Exp << "/100" << endl;
 	cout << "골드: " << Gold << endl;
-	cout << "========================\n";
+	cout << "========================";
 }
 
 void Character::LevelUp() {
