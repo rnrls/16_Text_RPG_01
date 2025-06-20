@@ -5,14 +5,14 @@
 
 using namespace std;
 
-Character::Character()
-	: Name("Default"), Level(1), MaxHelth(200), Helth(200),
-	Attack(30), Exp(0), Gold(0) {
-}
-
 Character::Character(const string& Name)
 	: Name(Name), Level(1), MaxHelth(200), Helth(200),
-	Attack(30), Exp(0), Gold(0) {
+	Attack(30), Exp(0), Gold(0) 
+{
+	cout <<  Name << " 생성 완료! " << endl;
+	cout << "레벨: " << Level << endl;
+	cout << "체력: " << Helth << endl;
+	cout << "공격력: " << Attack << endl;
 }
 
 void Character::DisplayStatus() {
