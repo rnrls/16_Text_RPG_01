@@ -7,23 +7,26 @@
 
 
 class Character {
+private:
+	
+	static Character* instance;
+
+	std::string name;
+	int level;
+	int maxHelth;
+	int helth;
+	int attack;
+	int exp;
+	int gold;
+	std::vector<Item>inventory;
+
+
 public:
 
-	Character(const std::string& Name);
-	static Character& Getinstance();
-		void DisplayStatus();
-		void LevelUp();
-		void UseItem(int index);
-	
-private:
-	static Character instance;
-	Character();
-	std::string Name;
-	int Level;
-	int MaxHelth;
-	int Helth;
-	int Attack;
-	int Exp;
-	int Gold;
-	std::vector<Item>inventory;
+	static Character* getInstance(const std::string& name = "");
+
+	void displayStatus();
+	void levelUp();
+	void useItem(int index);
+
 };
