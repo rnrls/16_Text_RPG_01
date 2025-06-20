@@ -5,23 +5,25 @@
 #include <string>
 #include <vector>
 
-using namespace std;
 
 class Character {
 public:
-	static Character& Getinstance() {
-		return instance;
-	}
+
+	Character(const std::string& Name);
+	static Character& Getinstance();
+		void DisplayStatus();
+		void LevelUp();
+		void UseItem(int index);
+	
 private:
 	static Character instance;
 	Character();
-	string Name;
+	std::string Name;
 	int Level;
 	int MaxHelth;
 	int Helth;
 	int Attack;
 	int Exp;
 	int Gold;
-	vector<Item>inventory;
-
+	std::vector<Item>inventory;
 };
