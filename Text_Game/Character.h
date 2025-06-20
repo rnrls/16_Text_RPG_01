@@ -9,8 +9,12 @@ using namespace std;
 
 class Character {
 public:
-
+	static Character& Getinstance() {
+		return instance;
+	}
 private:
+	static Character instance;
+	Character();
 	string Name;
 	int Level;
 	int MaxHelth;
