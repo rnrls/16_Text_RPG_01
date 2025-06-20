@@ -13,8 +13,8 @@ public:
 private:
 	string Name;
 	int Level;
-	int MaxHp;
-	int CurrentHp;
+	int MaxHelth;
+	int Helth;
 	int Attack;
 	int Exp;
 	int Gold;
