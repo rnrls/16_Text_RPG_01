@@ -74,18 +74,3 @@ public:
 	int getAttack() override;
 	void takeDamage(int damage) override;
 };
-
-class Monster5 : public Monster
-{
-private:
-	string name;
-	int health;
-	int attack;
-
-public:
-	Monster5(int level);
-	string getName() override;
-	int getHealth() override;
-	int getAttack() override;
-	void takeDamage(int damage) override;
-};
