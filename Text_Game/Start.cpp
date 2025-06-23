@@ -1,63 +1,119 @@
 #include <iostream>
+#include <string>
+#include <limits>
 
 using namespace std;
 
-enum MM_CHOICE
+enum class start_choice
 {
-	START_GAME = 1,
-	OPTION = 2,
-	EXIT = 3
+    START_GAME = 1,
+    EXIT = 2,
 };
 
-void StartGameLoop();
+void CreateCharacter() {
+    string name;
+
+    system("cls");
+    cout << "==============================\n";
+    cout << "        [캐릭터 생성]         \n";
+    cout << "==============================\n";
+    cout << "이름을 입력하세요: ";
+    cin >> name;
+
+    cout << "\n캐릭터 이름 등록 완료!\n";
+    cout << "이름: " << name << "\n\n";
+
+    system("pause");
+}
+
+
+void StartGameLoop()
+{
+    bool isRunning = true;
+    while (isRunning) {
+        system("cls");
+        cout << "\n===== 텍스트 RPG =====\n";
+        cout << "1. 캐릭터 스탯 보기\n";
+        cout << "2. 마을로 가기\n";
+        cout << "3. 초보자 사냥터\n";
+        cout << "4. 던전 도전\n";
+        cout << "5. 게임 종료\n";
+        cout << "메뉴를 선택하세요: ";
+
+        int Choice;
+        cin >> Choice;
+
+        if (cin.fail()) {
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            continue;
+        }
+
+        switch (Choice) {
+        case 1:
+            cout << "[캐릭터 스탯 보기] 기능 실행\n";
+            break;
+        case 2:
+            cout << "[마을로 이동] 기능 실행\n";
+            break;
+        case 3:
+            cout << "[초보자 사냥터 입장] 기능 실행\n";
+            break;
+        case 4:
+            cout << "[던전 도전] 기능 실행\n";
+            break;
+        case 5:
+            cout << "게임을 종료합니다.\n";
+            isRunning = false;
+            break;
+        default:
+            cout << "잘못된 선택입니다.\n";
+            break;
+        }
+
+        system("pause");
+    }
+}
 
 int main()
 {
-	cout << "=====================================" << endl;
-	cout << "              <Text RPG>             " << endl;
-	cout << "=====================================" << endl;
+    cout << "=====================================\n";
+    cout << "          <16TEAM_Text RPG>          \n";
+    cout << "=====================================\n";
 
-	system("pause");
+    system("pause");
 
-	// Loop
-	while (true)
-	{
-		system("cls");
+    while (true)
+    {
+        system("cls");
 
-		cout << "================Main menu================" << endl;
-		cout << "1. 게임 시작" << endl;
-		cout << "2. 나가기" << endl;
-		cout << "=========================================" << endl;
+        cout << "==============[Text RPG]=============\n";
+        cout << "            1. 게임시작              \n";
+        cout << "            2. 종료하기              \n";
+        cout << "=====================================\n";
 
-		int choice;
-		cin >> choice;
+        int choice;
+        cin >> choice;
 
-		if (cin.fail())
-		{
-			cin.clear();
-			cin.ignore(numeric_limits<streamsize>::max(), '\n');
-			continue;
-		}
+        if (cin.fail())
+        {
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            continue;
+        }
 
-		switch (static_cast<MM_CHOICE>(choice))
-		{
-		case MM_CHOICE::START_GAME:
-			StartGameLoop();
-			break;
-		case MM_CHOICE::OPTION:
-			// OPTION
-			break;
-		case MM_CHOICE::EXIT:
-			break;
-		default:
-			break;
-		}
-	}
+        switch (static_cast<start_choice>(choice))
+        {
+        case start_choice::START_GAME:
+            CreateCharacter();
+            StartGameLoop();
+            break;
+        case start_choice::EXIT:
+            return 0;
+        default:
+            break;
+        }
+    }
 
-	system("cls");
-
-	cout << "게임 종료..." << endl;
-	cout << "=====================================" << endl;
-	system("pause");
-	return 0;
+    return 0;
 }
