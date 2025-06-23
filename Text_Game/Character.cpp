@@ -1,10 +1,11 @@
-/*#include "Character.h"
+#include "Character.h"
 
 #include <iostream>
 #include <algorithm>
 
 using namespace std;
 
+/*
 Character::Character(const string& Name)
 	: Name(Name), Level(1), MaxHelth(200), Helth(200),
 	Attack(30), Exp(0), Gold(0) 
