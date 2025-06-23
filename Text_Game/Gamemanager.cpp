@@ -1,4 +1,4 @@
-/*
+
 #include "Gamemanager.h"
 #include "Character.h"
 #include "Monster.h"
@@ -54,18 +54,71 @@ void Gamemanager::Battle(Character* player, Monster* monster) {
         if (monster->isDead()) {
             cout << monster->getName() << "을(를) 처치했다! " << endl;
             player->addExperience(50);
-            int gold = (rand() % 11) + 10;
+            int gold = (rand() % 11+20);
             player->addGold(gold);
 
-            if ((rand() % 100) < 30) {
-                if (rand() % 2 == 0) player->addItem(new HealthPotion());
-                else player->addItem(new AttackBoost());
+            int itemType = rand() % 2;
+            if (itemType == 0)
+            {
+                player->addItem(new HealthPotion());
             }
+            else
+            {
+                player->addItem(new AttackBoost());
+            }
+            
             break;
         }
 
-        cout << "\n";
+        cout << endl;
+        showPlayerStatus(player);
         system("pause");
+
+        while (true) {
+            system("cls");
+            cout << "\n--- 전투 보상 ---" << endl;
+            cout << "전투가 끝났습니다. 아이템을 사용하시겠습니까?" << endl;
+            cout << "1. 체력 물약 사용" << endl;
+            cout << "2. 공격력 부스트 사용" << endl;
+            cout << "3. 그냥 진행하기" << endl;
+            cout << "선택: ";
+
+            int choice;
+            cin >> choice;
+
+            if (cin.fail()) {
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                choice = 0;
+            }
+
+            if (choice == 1) {
+                player->useItemByName("체력 물약");
+                showPlayerStatus(player);
+                system("pause");
+            }
+            else if (choice == 2) {
+                player->useItemByName("공격력 부스트");
+                showPlayerStatus(player); 
+                system("pause");
+            }
+            else if (choice == 3) {
+                break; 
+            }
+            else {
+                cout << "잘못된 입력입니다." << endl;
+                system("pause");
+            }
+        }
+       
+
+        break; 
+    }
+
+    cout << endl;
+    showPlayerStatus(player);
+    system("pause");
+
 
 
         cout << "\n[MONSTER TURN]" << endl;
@@ -82,11 +135,31 @@ void Gamemanager::Battle(Character* player, Monster* monster) {
         showPlayerStatus(player);
         system("pause");
     }
-}
+
 
 void Gamemanager::showPlayerStatus(Character* player) {
     cout << "\n--- 내 정보 ---\n";
     player->displayStatus();
     cout << "---------------\n";
 }
-*/
+
+void Gamemanager::DisplayInventory(Character* player) {
+    cout << "\n--- 인벤토리 ---\n";
+    const auto& inventory = player->getInventory();
+    if (inventory.empty()) {
+        cout << "가방이 비어있습니다." << endl;
+    }
+    else {
+        for (size_t i = 0; i < inventory.size(); ++i) {
+            cout << i + 1 << ". " << inventory[i]->getName() << endl;
+        }
+    }
+    cout << "----------------\n";
+}
+
+void Gamemanager::goToTown() {
+    Character* player = Character::getInstance();
+    player->fullHeal();
+    cout << "마을의 여관에서 편안하게 휴식하여 모든 체력을 회복했습니다." << endl;
+    showPlayerStatus(player);
+}
