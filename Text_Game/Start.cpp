@@ -13,6 +13,8 @@ enum class start_choice
 void CreateCharacter() {
     string name;
 
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+
     while (true) {
         system("cls");
         cout << "==============================\n";
@@ -20,7 +22,6 @@ void CreateCharacter() {
         cout << "==============================\n";
 
         cout << "이름을 입력하세요: ";
-        cin.ignore(numeric_limits<streamsize>::max(), '\n');
         getline(cin, name);
 
         if (name.empty() || name.find_first_not_of(' ') == string::npos) {
