@@ -16,13 +16,14 @@ private:
     int Exp;
     int Gold;
     std::vector<Item*> Inventory;
+    Character(const std::string& Name);
 
 public:
     static Character* GetInstance(const std::string& name = "");
 
     void DisplayStatus();
     void LevelUp();
-    bool isDead();
+    bool isDead() const;
 
     void UseItem(int index);
     void AddItem(Item* newItem);

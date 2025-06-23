@@ -9,8 +9,6 @@ using namespace std;
 Character* Character::instance = nullptr;
 
 
-
-/*
 Character::Character(const string& Name)
 	: Name(Name), Level(1), MaxHelth(200), Helth(200),
 	Attack(30), Exp(0), Gold(0) 
@@ -55,7 +53,7 @@ void Character::LevelUp()
 	cout << "체력: " << Helth << endl;
 	cout << "공격력: " << Attack << endl;
 }
-*/
+
 void Character::UseItem(int Index) 
 {
 	if (Index < 0 || Index >= Inventory.size()) {
@@ -111,5 +109,5 @@ const vector<Item*>& Character::GetInventory() const
 }
 
 bool Character::isDead() const {
-	return health <= 0;
+	return Helth <= 0;
 }
