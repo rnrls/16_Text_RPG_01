@@ -1,4 +1,4 @@
-/*#pragma once
+#pragma once
 
 
 class Character;
@@ -15,5 +15,5 @@ public:
     void showPlayerStatus(Character* player);
     void goToTown();
 };
-*/
+
 

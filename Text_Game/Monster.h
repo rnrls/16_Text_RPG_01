@@ -23,7 +23,9 @@ public:
 			health = 0;
 		}
 	}
-	
+	//isDead() Ãß°¡
+	virtual bool isDead() const { return health <= 0; }
+
 	virtual ~Monster() {}
 };
 
