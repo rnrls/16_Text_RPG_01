@@ -22,6 +22,7 @@ public:
 
     void DisplayStatus();
     void LevelUp();
+    bool isDead();
 
     void UseItem(int index);
     void AddItem(Item* newItem);

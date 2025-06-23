@@ -8,6 +8,8 @@ using namespace std;
 
 Character* Character::instance = nullptr;
 
+
+
 /*
 Character::Character(const string& Name)
 	: Name(Name), Level(1), MaxHelth(200), Helth(200),
@@ -106,4 +108,8 @@ int Character::GetMaxHelth() const
 const vector<Item*>& Character::GetInventory() const 
 {
 	return Inventory;
+}
+
+bool Character::isDead() const {
+	return health <= 0;
 }
