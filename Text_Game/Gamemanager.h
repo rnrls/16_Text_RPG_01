@@ -1,12 +1,19 @@
 /*#pragma once
 
-#include "Character.h"
-#include "Monster.h"
+
+class Character;
+class Monster;
 
 class Gamemanager {
 public:
-    Monster* Generatemonster(int level);
-    void Battle(Character* player);
+    Gamemanager(); 
+
+    
+    Monster* GenerateMonster(int level);
+    void Battle(Character* player, Monster* monster);
     void DisplayInventory(Character* player);
-};*/
+    void showPlayerStatus(Character* player);
+    void goToTown();
+};
+*/
 
