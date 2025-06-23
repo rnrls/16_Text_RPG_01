@@ -13,14 +13,24 @@ enum class start_choice
 void CreateCharacter() {
     string name;
 
-    system("cls");
-    cout << "==============================\n";
-    cout << "        [캐릭터 생성]         \n";
-    cout << "==============================\n";
-   
-    cin.ignore(numeric_limits<streamsize>::max(), '\n');
-    cout << "이름을 입력하세요: ";
-    getline(cin, name);
+    while (true) {
+        system("cls");
+        cout << "==============================\n";
+        cout << "        [캐릭터 생성]         \n";
+        cout << "==============================\n";
+
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        cout << "이름을 입력하세요: ";
+        getline(cin, name);
+
+        if (name.empty() || name.find_first_not_of(' ') == string::npos) {
+            cout << "\n[오류] 이름은 공백으로만 구성될 수 없습니다. 다시 입력해주세요.\n";
+            system("pause");
+        }
+        else {
+            break;
+        }
+    }
 
     cout << "\n캐릭터 이름 등록 완료!\n";
     cout << "이름: " << name << "\n\n";
