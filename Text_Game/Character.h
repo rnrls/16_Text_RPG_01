@@ -1,33 +1,39 @@
-/*#pragma once
+#pragma once
 
 #include "Item.h"
-
 #include <string>
 #include <vector>
 
-
-
 class Character {
 private:
-	
-	static Character* instance;
+    static Character* instance;
 
-	std::string name;
-	int level;
-	int maxHelth;
-	int helth;
-	int attack;
-	int exp;
-	int gold;
-	std::vector<Item>inventory;
-
+    std::string Name;
+    int Level;
+    int MaxHelth;
+    int Helth;
+    int Attack;
+    int Exp;
+    int Gold;
+    std::vector<Item*> Inventory;
 
 public:
+    static Character* GetInstance(const std::string& name = "");
 
-	static Character* getInstance(const std::string& name = "");
+    void DisplayStatus();
+    void LevelUp();
 
-	void displayStatus();
-	void levelUp();
-	void useItem(int index);
+    void UseItem(int index);
+    void AddItem(Item* newItem);
+    void Heal(int amount);
+    void AddAttack(int amount);  // 힘의 포션용
 
-};*/
+    void AddGold(int amount);
+    int GetGold() const;
+    bool SpendGold(int amount);
+
+    int GetMaxHelth() const;
+    const std::vector<Item*>& GetInventory() const;
+
+    void AddExp(int amount);  // 경험치 추가
+};

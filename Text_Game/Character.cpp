@@ -5,6 +5,9 @@
 
 using namespace std;
 
+
+Character* Character::instance = nullptr;
+
 /*
 Character::Character(const string& Name)
 	: Name(Name), Level(1), MaxHelth(200), Helth(200),
@@ -16,7 +19,16 @@ Character::Character(const string& Name)
 	cout << "공격력: " << Attack << endl;
 }
 
-void Character::DisplayStatus() {
+
+Character* Character::GetInstance(const string& name) 
+{
+	if (!instance)
+		instance = new Character(name);
+	return instance;
+}
+
+void Character::DisplayStatus() 
+{
 	cout << "===== 캐릭터 상태 =====" << endl;
 	cout << "이름: " << Name << endl;
 	cout << "레벨: " << Level << endl;
@@ -27,7 +39,8 @@ void Character::DisplayStatus() {
 	cout << "========================";
 }
 
-void Character::LevelUp() {
+void Character::LevelUp() 
+{
 	if (Level >= 10) return;
 
 	Level++;
@@ -41,4 +54,56 @@ void Character::LevelUp() {
 	cout << "공격력: " << Attack << endl;
 }
 */
+void Character::UseItem(int Index) 
+{
+	if (Index < 0 || Index >= Inventory.size()) {
+		cout << "잘못된 인덱스입니다." << endl;
+		return;
+	}
+	Inventory[Index]->use(this);
+	delete Inventory[Index];
+	Inventory.erase(Inventory.begin() + Index);
+}
 
+void Character::AddItem(Item* NewItem) 
+{
+	Inventory.push_back(NewItem);
+}
+
+void Character::Heal(int Amount) 
+{
+	Helth = min(Helth + Amount, MaxHelth);
+}
+
+void Character::AddAttack(int amount) {
+	Attack += amount;
+}
+
+int Character::GetGold() const 
+{
+	return Gold;
+}
+
+void Character::AddGold(int Amount) 
+{
+	Gold += Amount;
+}
+
+bool Character::SpendGold(int Amount) 
+{
+	if (Gold >= Amount) {
+		Gold -= Amount;
+		return true;
+	}
+	return false;
+}
+
+int Character::GetMaxHelth() const 
+{
+	return MaxHelth;
+}
+
+const vector<Item*>& Character::GetInventory() const 
+{
+	return Inventory;
+}
