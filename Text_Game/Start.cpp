@@ -17,8 +17,10 @@ void CreateCharacter() {
     cout << "==============================\n";
     cout << "        [캐릭터 생성]         \n";
     cout << "==============================\n";
+   
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
     cout << "이름을 입력하세요: ";
-    cin >> name;
+    getline(cin, name);
 
     cout << "\n캐릭터 이름 등록 완료!\n";
     cout << "이름: " << name << "\n\n";
