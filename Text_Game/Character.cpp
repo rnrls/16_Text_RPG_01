@@ -39,4 +39,5 @@ void Character::LevelUp() {
 	cout << "체력: " << Helth << endl;
 	cout << "공격력: " << Attack << endl;
 }
+//테스트
 
