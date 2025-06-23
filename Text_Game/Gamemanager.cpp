@@ -1,4 +1,4 @@
-#include "Gamemanager.h"
+/*#include "Gamemanager.h"
 #include "Monster.h"
 
 #include <iostream>
@@ -15,13 +15,12 @@ Monster* generateMonster(int level) {
 
     return new Monster(names[idx], baseHealth, baseAttack);
 
-void Gamemanager::displayInventory(Character* player)
-{
-    // ì¸ë²¤í† ë¦¬ ëª©ë¡
-    cout << "Inventory:" << endl;
-    for (size_t i = 0; i < player->inventory.size(); ++i) {
-        cout << i << ": " << player->inventory[i]->getName() << endl;
-    }
-    cout << "=========================\n";
-}
-
+    void Gamemanager::displayInventory(Character * player)
+    {
+        // ÀÎº¥Åä¸® ¸ñ·Ï
+        cout << "Inventory:" << endl;
+        for (size_t i = 0; i < player->inventory.size(); ++i) {
+            cout << i << ": " << player->inventory[i]->getName() << endl;
+        }
+        cout << "=========================\n";
+    }*/

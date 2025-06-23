@@ -1,4 +1,4 @@
-#pragma once
+/*#pragma once
 
 #include "Item.h"
 
@@ -29,4 +29,4 @@ public:
 	void levelUp();
 	void useItem(int index);
 
-};
+};*/

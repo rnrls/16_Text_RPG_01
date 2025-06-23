@@ -1,4 +1,4 @@
-#pragma once
+/*#pragma once
 
 #include "Character.h"
 #include "Monster.h"
@@ -8,5 +8,5 @@ public:
     Monster* Generatemonster(int level);
     void Battle(Character* player);
     void DisplayInventory(Character* player);
-};
+};*/
 
