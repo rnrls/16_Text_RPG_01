@@ -29,22 +29,22 @@ public:
 
 class Irongorem : public Monster
 {
-	Irongorem(int lavel);
+	Irongorem(int level);
 };
 
 class Lich : public Monster
 {
-	Lich(int lavel);
+	Lich(int level);
 };
 
 class Griffon : public Monster
 {
-	Griffon(int lavel);
+	Griffon(int level);
 };
 
 class Nightmare : public Monster
 {
-	Nightmare(int lavel);
+	Nightmare(int level);
 };
 
 
