@@ -10,32 +10,41 @@ private:
 
     std::string Name;
     int Level;
-    int MaxHelth;
-    int Helth;
+    int MaxHealth;
+    int Health;
     int Attack;
     int Exp;
     int Gold;
     std::vector<Item*> Inventory;
+
     Character(const std::string& Name);
 
 public:
     static Character* GetInstance(const std::string& name = "");
 
-    void DisplayStatus();
+    void DisplayStatus();       
     void LevelUp();
     bool isDead() const;
 
-    void UseItem(int index);
+    void UseItem(int index);    
     void AddItem(Item* newItem);
     void Heal(int amount);
-    void AddAttack(int amount);  // 힘의 포션용
+    void AddAttack(int amount);
 
     void AddGold(int amount);
     int GetGold() const;
     bool SpendGold(int amount);
 
-    int GetMaxHelth() const;
+    int GetMaxHealth() const;
     const std::vector<Item*>& GetInventory() const;
 
-    void AddExp(int amount);  // 경험치 추가
+    void AddExp(int amount);
+
+    const std::string& getName() const { return Name; }
+    int getHealth() const { return Health; }
+    int getAttack() const { return Attack; }
+    void takeDamage(int amount);
+    void fullHeal();
+    int GetLevel() const { return Level; }
+    void useItemByName(const std::string& itemName);
 };

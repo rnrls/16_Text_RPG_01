@@ -13,25 +13,40 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="소스 파일\Item">
+      <UniqueIdentifier>{5ca81dcc-3444-45a6-a766-c0f4ea602740}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\menu">
+      <UniqueIdentifier>{33e4eb80-ab52-492a-8557-e792abb77dd2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\Item">
+      <UniqueIdentifier>{c72dc4a2-433f-4e07-86b4-57b59ae83b55}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Character.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="Gamemanager.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="Item.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
     <ClCompile Include="Monster.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="Start.cpp">
-      <Filter>소스 파일</Filter>
+    <ClCompile Include="AttackPotion.cpp">
+      <Filter>소스 파일\Item</Filter>
     </ClCompile>
-    <ClCompile Include="Healingpotion.cpp">
-      <Filter>소스 파일</Filter>
+    <ClCompile Include="HealthPotion.cpp">
+      <Filter>소스 파일\Item</Filter>
+    </ClCompile>
+    <ClCompile Include="Item.cpp">
+      <Filter>소스 파일\Item</Filter>
+    </ClCompile>
+    <ClCompile Include="Gamemanager.cpp">
+      <Filter>소스 파일\menu</Filter>
+    </ClCompile>
+    <ClCompile Include="Start.cpp">
+      <Filter>소스 파일\menu</Filter>
+    </ClCompile>
+    <ClCompile Include="AttackPotion.h">
+      <Filter>헤더 파일\Item</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -41,14 +56,14 @@
     <ClInclude Include="Gamemanager.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="Item.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
     <ClInclude Include="Monster.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="Healingpotion.h">
-      <Filter>헤더 파일</Filter>
+    <ClInclude Include="HealthPotion.h">
+      <Filter>헤더 파일\Item</Filter>
+    </ClInclude>
+    <ClInclude Include="Item.h">
+      <Filter>헤더 파일\Item</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

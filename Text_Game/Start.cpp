@@ -1,8 +1,12 @@
 #include <iostream>
 #include <string>
 #include <limits>
+#include "Gamemanager.h"
+#include "Character.h"
 
 using namespace std;
+
+Gamemanager gameManager;
 
 enum class start_choice
 {
@@ -42,6 +46,8 @@ void CreateCharacter() {
 
 void StartGameLoop()
 {
+    Character* player = Character::GetInstance();
+
     bool isRunning = true;
     while (isRunning) {
         system("cls");
@@ -56,35 +62,33 @@ void StartGameLoop()
         int Choice;
         cin >> Choice;
 
-        if (cin.fail()) {
-            cin.clear();
-            cin.ignore(numeric_limits<streamsize>::max(), '\n');
-            continue;
-        }
-
         switch (Choice) {
         case 1:
-            cout << "[캐릭터 스탯 보기] 기능 실행\n";
+            player->DisplayStatus();
+            system("pause");
             break;
         case 2:
-            cout << "[마을로 이동] 기능 실행\n";
+            gameManager.goToTown();
+            system("pause");
             break;
         case 3:
-            cout << "[초보자 사냥터 입장] 기능 실행\n";
-            break;
+        {
+            Monster* monster = gameManager.GenerateMonster(player->GetLevel());
+            gameManager.Battle(player, monster);
+            delete monster;
+        }
+        break;
         case 4:
-            cout << "[던전 도전] 기능 실행\n";
+            // 던전도 비슷하게 몬스터 생성해서 배틀 호출
             break;
         case 5:
-            cout << "게임을 종료합니다.\n";
             isRunning = false;
             break;
         default:
             cout << "잘못된 선택입니다.\n";
+            system("pause");
             break;
         }
-
-        system("pause");
     }
 }
 
