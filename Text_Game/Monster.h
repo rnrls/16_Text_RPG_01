@@ -1,76 +1,50 @@
 #pragma once
-
 #include<iostream>
 #include<string>
 
-using namespace std;
-
 class Monster
 {
+protected:
+	std::string name;
+	int health;
+	int attack;
+
+	Monster(std::string n, int h, int a) : name(n), health(h), attack(a) {}
+
 public:
-	virtual string getName() = 0;
-	virtual int getHealth() = 0;
-	virtual int getAttack() = 0;
-	virtual void takeDamage(int damage) = 0;
+	virtual std::string getName() { return name; }
+	virtual int getHealth() { return health; }
+	virtual int getAttack() { return attack; }
+	virtual void takeDamage(int damage)
+	{
+		health -= damage;
+		if (health < 0)
+		{
+			health = 0;
+		}
+	}
+	
 	virtual ~Monster() {}
 };
 
-class Monster1 : public Monster
+class Irongorem : public Monster
 {
-private:
-	string name;
-	int health;
-	int attack;
-
-public:
-	Monster1(int level);
-	string getName() override;
-	int getHealth() override;
-	int getAttack() override;
-	void takeDamage(int damage) override;
+	Irongorem(int lavel);
 };
 
-class Monster2 : public Monster
+class Lich : public Monster
 {
-private:
-	string name;
-	int health;
-	int attack;
-
-public:
-	Monster2(int level);
-	string getName() override;
-	int getHealth() override;
-	int getAttack() override;
-	void takeDamage(int damage) override;
+	Lich(int lavel);
 };
 
-class Monster3 : public Monster
+class Griffon : public Monster
 {
-private:
-	string name;
-	int health;
-	int attack;
-
-public:
-	Monster3(int level);
-	string getName() override;
-	int getHealth() override;
-	int getAttack() override;
-	void takeDamage(int damage) override;
+	Griffon(int lavel);
 };
 
-class Monster4 : public Monster
+class Nightmare : public Monster
 {
-private:
-	string name;
-	int health;
-	int attack;
-
-public:
-	Monster4(int level);
-	string getName() override;
-	int getHealth() override;
-	int getAttack() override;
-	void takeDamage(int damage) override;
+	Nightmare(int lavel);
 };
+
+
