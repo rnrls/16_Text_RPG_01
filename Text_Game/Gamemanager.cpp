@@ -48,11 +48,21 @@ void Gamemanager::Battle(Character* player, Monster* monster) {
         }
         else if (choice == 2) {
             DisplayInventory(player);
-            cout << "사용할 아이템 번호 선택: ";
-            int itemIndex;
-            cin >> itemIndex;
-            --itemIndex;
-            player->UseItem(itemIndex);
+            cout << "아이템이 없습니다.(EXIT: 0): ";
+            string choice_exit;
+            cin >> choice_exit;
+            if (choice_exit == "0")
+            {
+                cout << "아이템이 존재하지않아 이전으로 넘어갑니다.\n";
+                continue;
+            }
+            else
+            {
+                cin.ignore();
+                int itemIndex = stoi(choice_exit);
+                --itemIndex;
+                player->UseItem(itemIndex);
+            }
         }
         else {
             cout << "잘못된 선택입니다.\n";
@@ -61,7 +71,8 @@ void Gamemanager::Battle(Character* player, Monster* monster) {
 
         if (monster->isDead()) {
             cout << monster->getName() << "을(를) 처치했다! " << endl;
-            player->AddExp(50);
+            int exp = (rand() % 21 + 40);
+            player->AddExp(exp);
             int gold = (rand() % 11 + 20);
             player->AddGold(gold);
 
