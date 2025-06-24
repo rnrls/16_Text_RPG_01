@@ -153,8 +153,19 @@ void Gamemanager::DisplayInventory(Character* player) {
 
 void Gamemanager::goToTown() {
     Character* player = Character::GetInstance();
-    player->fullHeal();
-    cout << "마을의 여관에서 편안하게 휴식하여 모든 체력을 회복했습니다." << endl;
+    if (player->GetGold() >= 5) {
+     
+        player->SpendGold(5);
+
+        
+        player->fullHeal();
+
+       
+        cout << "마을의 여관에서 편안하게 휴식하여 모든 체력을 회복하고, 5 골드를 지불했습니다." << endl;
+    }
+    else {
+        
+        cout << "골드가 부족하여 여관에서 쉴 수 없습니다. (필요 골드: 5)" << endl;
+    }
     showPlayerStatus(player);
 }
-//
