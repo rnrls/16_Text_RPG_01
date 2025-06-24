@@ -48,11 +48,21 @@ void Gamemanager::Battle(Character* player, Monster* monster) {
         }
         else if (choice == 2) {
             DisplayInventory(player);
-            cout << "사용할 아이템 번호 선택: ";
-            int itemIndex;
-            cin >> itemIndex;
-            --itemIndex;
-            player->UseItem(itemIndex);
+            cout << "사용할 아이템 번호 선택(EXIT: 0): ";
+            string choice_exit;
+            cin >> choice_exit;
+            if (choice_exit == "0")
+            {
+                cout << "인벤토리 종료\n";
+                continue;
+            }
+            else 
+            {
+                cin.ignore();
+                int itemIndex = stoi(choice_exit);
+                --itemIndex;
+                player->UseItem(itemIndex);
+            }
         }
         else {
             cout << "잘못된 선택입니다.\n";
@@ -61,7 +71,8 @@ void Gamemanager::Battle(Character* player, Monster* monster) {
 
         if (monster->isDead()) {
             cout << monster->getName() << "을(를) 처치했다! " << endl;
-            player->AddExp(50);
+            int exp = (rand() % 21 + 40);
+            player->AddExp(exp);
             int gold = (rand() % 11 + 20);
             player->AddGold(gold);
 
@@ -78,7 +89,7 @@ void Gamemanager::Battle(Character* player, Monster* monster) {
         int monsterAttack = monster->getAttack();
         cout << monster->getName() << "의 공격!" << endl;
         player->takeDamage(monsterAttack);
-        cout << ">> " << player->getName() << "에게 " << monsterAttack << "의 데미지!" << endl;
+        cout << ">> " << player->getName() << "에게 " << monsterAttack << "의 데미지! (남은 체력:" << player->getHealth() << ")" << endl;
 
         if (player->isDead()) {
             cout << player->getName() << "이(가) 쓰러졌다..." << endl;
