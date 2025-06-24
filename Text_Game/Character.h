@@ -29,6 +29,7 @@ public:
 
     void UseItem(int index);    
     void AddItem(Item* newItem);
+	void RemoveItem(int index);
     void Heal(int amount);
     void AddAttack(int amount);
 

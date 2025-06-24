@@ -75,6 +75,11 @@ void Character::UseItem(int index) {
     Inventory.erase(Inventory.begin() + index);
 }
 
+void Character::RemoveItem(int index) {  
+    delete Inventory[index];
+    Inventory.erase(Inventory.begin() + index);
+}
+
 void Character::AddItem(Item* NewItem) {
     Inventory.push_back(NewItem);
 }

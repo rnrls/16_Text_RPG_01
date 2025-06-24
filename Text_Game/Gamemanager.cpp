@@ -103,6 +103,23 @@ void Gamemanager::Battle(Character* player, Monster* monster) {
                 player->AddItem(new HealthPotion());
             else
                 player->AddItem(new AttackPotion());
+
+            cout << "\n상점을 방문하시겠습니까? (Y/N): ";
+            char storeChoice;
+            cin >> storeChoice;
+            if (storeChoice == 'Y' || storeChoice == 'y')
+            {
+				goStore(player);
+            }else if (storeChoice == 'N' || storeChoice == 'n')
+            {
+                break;
+            }
+            else
+            {
+                cout << "잘못된 선택입니다" << endl;
+                continue;
+			}
+
             break;
         }
 
@@ -170,4 +187,117 @@ void Gamemanager::goToTown() {
         cout << "골드가 부족하여 여관에서 쉴 수 없습니다. (필요 골드: 5)" << endl;
     }
     showPlayerStatus(player);
+}
+
+void Gamemanager::goStore(Character* player) {
+    system("cls");
+    while (true) {
+        cout << "==== 상점 ====" << endl;
+		cout << "현재 골드: " << player->GetGold() << endl;
+		cout << "1.아이템 구매" << endl;
+		cout << "2.아이템 판매" << endl;
+		cout << "3.상점 나가기" << endl;
+        cout << "선택: ";
+
+        int choice;
+        cin >> choice;
+
+        if(choice == 1)
+        {
+            buyStore(player);
+            system("cls");
+			continue;
+        }
+        else if (choice == 2)
+        {
+            sellStore(player);
+            system("cls");
+			continue;
+        }
+        else if (choice == 3)
+        {
+            return;
+        }
+        else
+        {
+			cout << "잘못된 입력입니다." << endl;
+            continue;
+        }
+
+    }
+}
+
+void Gamemanager::buyStore(Character* player) {
+    system("cls");
+    cout << "좋은물건을 골라보시지요" << endl;
+	cout << "현재 골드: " << player->GetGold() << endl;
+    cout << "1.체력 포션____10골드" << endl;
+    cout << "2.힘의 영약____20골드" << endl;
+    cout << "0.상점 나가기" << endl;
+    cout << "선택: ";
+    
+    int choice;
+    cin >> choice;
+    if (choice == 1) {
+        if (player->GetGold() >= 10) {
+            player->SpendGold(10);
+            player->AddItem(new HealthPotion());
+            cout << "체력 포션을 구매했습니다" << endl;
+        } else {
+            cout << "골드가 모자라군" << endl;
+        }
+    } else if (choice == 2) {
+        if (player->GetGold() >= 20) {
+            player->SpendGold(20);
+            player->AddItem(new AttackPotion());
+            cout << "힘의 영약을 구매했습니다" << endl;
+        } else {
+            cout << "골드가 모자라군" << endl;
+        }
+    } else if (choice == 0) {
+        return;
+    } else {
+        cout << "잘못된 선택입니다." << endl;
+    }
+}
+
+void Gamemanager::sellStore(Character* player) {
+    system("cls");
+	cout << "어떤물건을 파실건가요" << endl;
+	cout << "현재 골드: " << player->GetGold() << endl;
+    vector<int> sellList;
+    const auto& inventory = player->GetInventory();
+    if (inventory.empty()) {
+        cout << " - 팔 물건 없음\n";
+    }
+    else {
+        for (size_t i = 0; i < inventory.size(); ++i) {
+            if(inventory[i]->GetName() == "힘의 영약")
+            {
+				cout << i + 1 << ". " << inventory[i]->GetName() << "____12골드" << endl;
+            }
+            else if (inventory[i]->GetName() == "체력 포션")
+            {
+                cout << i + 1 << ". " << inventory[i]->GetName() << "____6골드" << endl;
+            }
+            sellList.push_back(i);
+        }  
+        cout << "0.상점 나가기" << endl;
+        cout << "선택: ";
+
+		int choice;
+        cin >> choice;
+        if(choice == 0){
+            return;
+        }
+        else if (choice > 0 && choice <= static_cast<int>(sellList.size())) {
+            int Index = sellList[choice - 1];
+            Item* itemToSell = inventory[Index];
+            int Price = (itemToSell->GetName() == "힘의 영약") ? 12 : 6;
+            player->AddGold(Price);
+			player->RemoveItem(Index);
+        } else {
+            cout << "잘못된 선택입니다." << endl;
+		}
+    }
 }
