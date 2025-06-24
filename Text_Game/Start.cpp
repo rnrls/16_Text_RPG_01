@@ -7,6 +7,7 @@
 using namespace std;
 
 Gamemanager gameManager;
+string playerName;
 
 enum class start_choice
 {
@@ -41,12 +42,14 @@ void CreateCharacter() {
     cout << "ÀÌ¸§: " << name << "\n\n";
 
     system("pause");
+
+    playerName = name;
 }
 
 
 void StartGameLoop()
 {
-    Character* player = Character::GetInstance();
+    Character* player = Character::GetInstance(playerName);
 
     bool isRunning = true;
     while (isRunning) {

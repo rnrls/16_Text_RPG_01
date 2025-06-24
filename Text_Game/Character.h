@@ -47,7 +47,4 @@ public:
     void fullHeal();
     int GetLevel() const { return Level; }
     void useItemByName(const std::string& itemName);
-
-    void SetName(const std::string& name); 
-
 };
