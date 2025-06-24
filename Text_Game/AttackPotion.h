@@ -4,6 +4,6 @@
 
 class AttackPotion : public Item {
 public:
-    AttackPotion() : Item("힘의 포션") {}
+    AttackPotion() : Item("힘의 영약") {}
     void use(Character* character) override;
 };
