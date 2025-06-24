@@ -91,6 +91,7 @@ void Gamemanager::Battle(Character* player, Monster* monster) {
 
         if (monster->isDead()) {
             cout << monster->getName() << "을(를) 처치했다! " << endl;
+            player->IncrementDefeatedMonstersCount();
             int exp = (rand() % 21 + 35);
             player->AddExp(exp);
             int gold = (rand() % 11 + 20);
