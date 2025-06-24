@@ -54,7 +54,7 @@ void Gamemanager::Battle(Character* player, Monster* monster) {
     system("pause");
 
     while (!player->isDead() && !monster->isDead()) {
-        system("cls");
+        //*system("cls");
         cout << "[PLAYER TURN]\n";
         cout << "1. 공격\n2. 아이템 사용\n선택: ";
         int choice;
@@ -65,6 +65,7 @@ void Gamemanager::Battle(Character* player, Monster* monster) {
             cout << player->getName() << "의 공격!" << endl;
             monster->takeDamage(playerAttack);
             cout << ">> " << monster->getName() << "에게 " << playerAttack << "의 데미지! (남은 체력: " << monster->getHealth() << ")" << endl;
+            cout << "---------------------------------------------" << endl;
         }
         else if (choice == 2) {
             DisplayInventory(player);
@@ -105,11 +106,12 @@ void Gamemanager::Battle(Character* player, Monster* monster) {
             break;
         }
 
-        cout << "\n[MONSTER TURN]" << endl;
+        cout << "[MONSTER TURN]" << endl;
         int monsterAttack = monster->getAttack();
         cout << monster->getName() << "의 공격!" << endl;
         player->takeDamage(monsterAttack);
         cout << ">> " << player->getName() << "에게 " << monsterAttack << "체력 :" << player->getHealth() << ")" << endl;
+        cout << "---------------------------------------------" << endl;
 
         if (player->isDead()) {
             cout << player->getName() << "이(가) 쓰러졌다..." << endl;
@@ -123,7 +125,7 @@ void Gamemanager::Battle(Character* player, Monster* monster) {
             break;
         }
 
-        system("pause");
+       //* system("pause");
     }
 
     showPlayerStatus(player);
