@@ -89,7 +89,7 @@ void Gamemanager::Battle(Character* player, Monster* monster) {
         int monsterAttack = monster->getAttack();
         cout << monster->getName() << "의 공격!" << endl;
         player->takeDamage(monsterAttack);
-        cout << ">> " << player->getName() << "에게 " << monsterAttack << "의 데미지!" << endl;
+        cout << ">> " << player->getName() << "에게 " << monsterAttack << "체력 :" << player->getHealth() << ")" << endl;
 
         if (player->isDead()) {
             cout << player->getName() << "이(가) 쓰러졌다..." << endl;
