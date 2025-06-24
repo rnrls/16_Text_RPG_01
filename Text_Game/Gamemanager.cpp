@@ -112,6 +112,13 @@ void Gamemanager::Battle(Character* player, Monster* monster) {
 
         if (player->isDead()) {
             cout << player->getName() << "이(가) 쓰러졌다..." << endl;
+            system("pause");
+
+            system("cls");
+
+            cout << "\n=== [게임 오버] ===\n";
+            system("pause");
+
             break;
         }
 
