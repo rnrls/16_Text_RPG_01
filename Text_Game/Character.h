@@ -15,6 +15,7 @@ private:
     int Attack;
     int Exp;
     int Gold;
+    int defeatedMonsters;
     std::vector<Item*> Inventory;
 
     Character(const std::string& Name);
@@ -39,6 +40,9 @@ public:
     const std::vector<Item*>& GetInventory() const;
 
     void AddExp(int amount);
+
+    void IncrementDefeatedMonstersCount();
+    int GetDefeatedMonstersCount() const;
 
     const std::string& getName() const { return Name; }
     int getHealth() const { return Health; }

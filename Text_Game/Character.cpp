@@ -8,7 +8,7 @@ Character* Character::instance = nullptr;
 
 Character::Character(const string& Name)
     : Name(Name), Level(1), MaxHealth(200), Health(200),
-    Attack(30), Exp(0), Gold(0) {
+    Attack(30), Exp(0), Gold(0), defeatedMonsters(0) {
     cout << Name << " 생성 완료! " << endl;
     cout << "레벨: " << Level << endl;
     cout << "체력: " << Health << endl;
@@ -29,6 +29,7 @@ void Character::DisplayStatus() {  // 대문자 D
     cout << "공격력: " << Attack << endl;
     cout << "경험치: " << Exp << "/100" << endl;
     cout << "골드: " << Gold << endl;
+    cout << "처치한 몬스터: " << defeatedMonsters << "마리" << endl;
 
     cout << "보유 아이템:\n";
     if (Inventory.empty()) {
@@ -40,6 +41,14 @@ void Character::DisplayStatus() {  // 대문자 D
         }
     }
     cout << "========================" << endl;
+}
+
+void Character::IncrementDefeatedMonstersCount() {
+    defeatedMonsters++;
+}
+
+int Character::GetDefeatedMonstersCount() const {
+    return defeatedMonsters;
 }
 
 void Character::LevelUp() {
