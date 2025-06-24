@@ -19,12 +19,23 @@ Gamemanager::Gamemanager() {
 Monster* Gamemanager::GenerateMonster(int level) {
     Monster* monster = nullptr;
     int monsterType = rand() % 4;
-
-    switch (monsterType) {
-    case 0: monster = new Irongorem(level); break;
-    case 1: monster = new Lich(level); break;
-    case 2: monster = new Griffon(level); break;
-    case 3: monster = new Nightmare(level); break;
+    if (level < 5)
+    {
+        switch (monsterType){
+        case 0: monster = new Goblin(level); break;
+        case 1: monster = new Wereworf(level); break;
+        case 2: monster = new Lizardeman(level); break;
+        case 3: monster = new Harpy(level); break;
+        }
+    }
+    else
+    {
+        switch (monsterType){
+        case 0: monster = new Irongorem(level); break;
+        case 1: monster = new Lich(level); break;
+        case 2: monster = new Griffon(level); break;
+        case 3: monster = new Nightmare(level); break;
+        }
     }
     return monster;
 }
@@ -53,7 +64,7 @@ void Gamemanager::Battle(Character* player, Monster* monster) {
             cin >> choice_exit;
             if (choice_exit == "0")
             {
-                cout << "아이템이 존재하지않아 이전으로 넘어갑니다.\n";
+                cout << "인벤토리 종료\n";
                 continue;
             }
             else
