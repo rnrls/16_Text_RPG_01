@@ -3,16 +3,16 @@
 using namespace std;
 
 //저렙
-Goblin::Goblin(int playerlevel) : Monster("고블린",  35 + (2 * playerlevel), 5 + (4 * playerlevel)) {}
+Goblin::Goblin(int playerlevel) : Monster("고블린",  1000 + (2 * playerlevel), 5 + (4 * playerlevel)) {}
 
 
-Wereworf::Wereworf(int playerlevel) : Monster("웨어 울프", 45 + (2 * playerlevel), 10 + (4 * playerlevel)) {}
+Wereworf::Wereworf(int playerlevel) : Monster("웨어 울프", 1000 + (2 * playerlevel), 10 + (4 * playerlevel)) {}
 
 
-Lizardeman::Lizardeman(int playerlevel) : Monster("리자드맨",  60 + (2 * playerlevel), 15 + (4 * playerlevel)) {}
+Lizardeman::Lizardeman(int playerlevel) : Monster("리자드맨", 1000 + (2 * playerlevel), 15 + (4 * playerlevel)) {}
 
 
-Harpy::Harpy(int playerlevel) : Monster("하피", 75 + (2 * playerlevel), 20 + (4 * playerlevel)) {}
+Harpy::Harpy(int playerlevel) : Monster("하피", 75 + (2 * playerlevel), 1000 + (4 * playerlevel)) {}
 
 
 

@@ -37,6 +37,9 @@ void CreateCharacter() {
         }
     }
 
+    Character* player = Character::GetInstance(name);
+
+
     cout << "\n캐릭터 이름 등록 완료!\n";
     cout << "이름: " << name << "\n\n";
 
