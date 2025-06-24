@@ -35,6 +35,7 @@ public:
 	virtual ~Monster() {}
 };
 
+
 // Àú·¾ 
 class Goblin : public Monster
 {
@@ -60,6 +61,34 @@ public:
 	Harpy(int level);
 };
 
+
+//Áß°£
+class Gargoyle : public Monster
+{
+public:
+	Gargoyle(int level);
+};
+
+class Dryad : public Monster
+{
+public:
+	Dryad(int level);
+};
+
+class Lich : public Monster
+{
+public:
+	Lich(int level);
+};
+
+class Vampire : public Monster
+{
+public:
+	Vampire(int level);
+};
+
+
+
 // °í·¾ 
 class Irongorem : public Monster
 {
@@ -67,10 +96,10 @@ public:
 	Irongorem(int level);
 };
 
-class Lich : public Monster
+class Manticore : public Monster
 {
 public:
-	Lich(int level);
+	Manticore(int level);
 };
 
 class Griffon : public Monster

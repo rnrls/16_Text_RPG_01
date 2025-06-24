@@ -28,11 +28,20 @@ Monster* Gamemanager::GenerateMonster(int level) {
         case 3: monster = new Harpy(level); break;
         }
     }
+    else if (level < 8)
+    {
+        switch (monsterType) {
+        case 0: monster = new Gargoyle(level); break;
+        case 1: monster = new Dryad(level); break;
+        case 2: monster = new Lich(level); break;
+        case 3: monster = new Vampire(level); break;
+        }
+    }
     else
     {
         switch (monsterType){
         case 0: monster = new Irongorem(level); break;
-        case 1: monster = new Lich(level); break;
+        case 1: monster = new Manticore(level); break;
         case 2: monster = new Griffon(level); break;
         case 3: monster = new Nightmare(level); break;
         }
@@ -82,8 +91,7 @@ void Gamemanager::Battle(Character* player, Monster* monster) {
 
         if (monster->isDead()) {
             cout << monster->getName() << "을(를) 처치했다! " << endl;
-            player->IncrementDefeatedMonstersCount();
-            int exp = (rand() % 21 + 40);
+            int exp = (rand() % 21 + 30);
             player->AddExp(exp);
             int gold = (rand() % 11 + 20);
             player->AddGold(gold);
@@ -93,7 +101,6 @@ void Gamemanager::Battle(Character* player, Monster* monster) {
                 player->AddItem(new HealthPotion());
             else
                 player->AddItem(new AttackPotion());
-
             break;
         }
 
