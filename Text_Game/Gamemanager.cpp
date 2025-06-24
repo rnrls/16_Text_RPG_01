@@ -130,3 +130,4 @@ void Gamemanager::goToTown() {
     cout << "마을의 여관에서 편안하게 휴식하여 모든 체력을 회복했습니다." << endl;
     showPlayerStatus(player);
 }
+//
