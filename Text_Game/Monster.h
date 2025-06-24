@@ -1,7 +1,6 @@
 #pragma once
 #include<iostream>
 #include<string>
-#include <cstdlib>
 
 class Monster
 {
@@ -15,13 +14,7 @@ protected:
 public:
 	virtual std::string getName() { return name; }
 	virtual int getHealth() { return health; }
-	virtual int getAttack()
-	{ 
-		int damage_variance = (rand() % 11);
-		int final_damage =attack + damage_variance;
-		
-		return final_damage;
-	}
+	virtual int getAttack() { return attack; }
 	virtual void takeDamage(int damage)
 	{
 		health -= damage;
