@@ -137,4 +137,17 @@ void Character::useItemByName(const std::string& itemName) {
     if (!found) {
         cout << "해당 아이템을 보유하고 있지 않습니다.\n";
     }
+
+}
+
+void Character::SetName(const std::string& name) 
+{
+    if (Name.empty()) 
+    {
+        this->Name = name;
+    }
+    else 
+    {
+        std::cout << "이미 이름이 설정되어 있습니다: " << Name << std::endl;
+    }
 }
