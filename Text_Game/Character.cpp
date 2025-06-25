@@ -9,7 +9,7 @@ Character* Character::instance = nullptr;
 Character::Character(const string& Name)
     : Name(Name), Level(1), MaxHealth(200), Health(200),
     Attack(30), Exp(0), Gold(0), defeatedMonsters(0) {
-    cout << Name << " 생성 완료! " << endl;
+    cout << "\n" << "[" << Name << "]" << endl;
     cout << "레벨: " << Level << endl;
     cout << "체력: " << Health << endl;
     cout << "공격력: " << Attack << endl;
