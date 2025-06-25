@@ -120,6 +120,11 @@ void Gamemanager::Battle(Character* player, Monster* monster) {
             else
                 player->AddItem(new AttackPotion()); // 30% 확률
 
+            Boss* boss = dynamic_cast<Boss*>(monster);
+            if (boss != nullptr) {
+                return;
+            }
+
             showPlayerStatus(player);
 
             cout << "\n상점을 방문하시겠습니까? (Y/N): ";
