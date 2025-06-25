@@ -87,8 +87,8 @@ bool StartGameLoop()
             gameManager.Battle(player, monster);
 
             if (player->isDead()) {
-                system("pause");
-                system("cls");
+                //system("pause");
+                //system("cls");
                 cout << "\n당신은 사냥터에서 쓰러졌습니다...\n";
                 system("pause");
                 return false;
@@ -106,8 +106,8 @@ bool StartGameLoop()
 
                 if (player->isDead()) {
                     delete boss;
-                    system("pause");
-                    system("cls");
+                    //system("pause");
+                    //system("cls");
                     cout << "\n 당신은 보스에게 패배했습니다... \n";
                     system("pause");
                     return false;
@@ -175,8 +175,8 @@ int main()
             if (!StartGameLoop()) {
                 system("cls");
                 cout << "=== [게임 오버] ===\n";
-                system("pause");
-                system("cls");
+                //system("pause");
+                //system("cls");
                 cout << "\n\n 메인 메뉴로 돌아갑니다.\n\n";
                 system("pause");
             }
