@@ -1,4 +1,4 @@
-
+Ôªø
 #include "Gamemanager.h"
 #include "Character.h"
 #include "Monster.h"
@@ -57,31 +57,31 @@ Monster* Gamemanager::GenerateBoss(int level)
 }
 
 void Gamemanager::Battle(Character* player, Monster* monster) {
-    cout << "\n!! æﬂª˝¿« " << monster->getName() << "¿Ã(∞°) ≥™≈∏≥µ¥Ÿ! !!" << endl;
+    cout << "\n!! ÏïºÏÉùÏùò " << monster->getName() << "Ïù¥(Í∞Ä) ÎÇòÌÉÄÎÇ¨Îã§! !!" << endl;
     system("pause");
 
     while (!player->isDead() && !monster->isDead()) {
         //*system("cls");
         cout << "[PLAYER TURN]\n";
-        cout << "1. ∞¯∞›\n2. æ∆¿Ã≈€ ªÁøÎ\nº±≈√: ";
+        cout << "1. Í≥µÍ≤©\n2. ÏïÑÏù¥ÌÖú ÏÇ¨Ïö©\nÏÑ†ÌÉù: ";
         int choice;
         cin >> choice;
 
         if (choice == 1) {
             int playerAttack = player->getAttack();
-            cout << player->getName() << "¿« ∞¯∞›!" << endl;
+            cout << player->getName() << "Ïùò Í≥µÍ≤©!" << endl;
             monster->takeDamage(playerAttack);
-            cout << ">> " << monster->getName() << "ø°∞‘ " << playerAttack << "¿« µ•πÃ¡ˆ! (≥≤¿∫ √º∑¬: " << monster->getHealth() << ")" << endl;
-            cout << "---------------------------------------------" << endl;
+            cout << ">> " << monster->getName() << "ÏóêÍ≤å " << playerAttack << "Ïùò Îç∞ÎØ∏ÏßÄ! (ÎÇ®ÏùÄ Ï≤¥Î†•: " << monster->getHealth() << ")" << endl;
+            cout << "O========[|==========================>" << endl;
         }
         else if (choice == 2) {
             DisplayInventory(player);
-            cout << "æ∆¿Ã≈€¿Ã æ¯Ω¿¥œ¥Ÿ.(EXIT: 0): ";
+            cout << "ÏïÑÏù¥ÌÖúÏù¥ ÏóÜÏäµÎãàÎã§.(EXIT: 0): ";
             string choice_exit;
             cin >> choice_exit;
             if (choice_exit == "0")
             {
-                cout << "¿Œ∫•≈‰∏Æ ¡æ∑·\n";
+                cout << "Ïù∏Î≤§ÌÜ†Î¶¨ Ï¢ÖÎ£å\n";
                 continue;
             }
             else
@@ -93,12 +93,12 @@ void Gamemanager::Battle(Character* player, Monster* monster) {
             }
         }
         else {
-            cout << "¿ﬂ∏¯µ» º±≈√¿‘¥œ¥Ÿ.\n";
+            cout << "ÏûòÎ™ªÎêú ÏÑ†ÌÉùÏûÖÎãàÎã§.\n";
             continue;
         }
 
         if (monster->isDead()) {
-            cout << monster->getName() << "¿ª(∏¶) √≥ƒ°«ﬂ¥Ÿ! " << endl;
+            cout << monster->getName() << "ÏùÑ(Î•º) Ï≤òÏπòÌñàÎã§! " << endl;
             player->IncrementDefeatedMonstersCount();
             int exp = (rand() % 21 + 35);
             player->AddExp(exp);
@@ -111,7 +111,7 @@ void Gamemanager::Battle(Character* player, Monster* monster) {
             else
                 player->AddItem(new AttackPotion());
 
-            cout << "\nªÛ¡°¿ª πÊπÆ«œΩ√∞⁄Ω¿¥œ±Ó? (Y/N): ";
+            cout << "\nÏÉÅÏ†êÏùÑ Î∞©Î¨∏ÌïòÏãúÍ≤†ÏäµÎãàÍπå? (Y/N): ";
             char storeChoice;
             cin >> storeChoice;
             if (storeChoice == 'Y' || storeChoice == 'y')
@@ -123,7 +123,7 @@ void Gamemanager::Battle(Character* player, Monster* monster) {
             }
             else
             {
-                cout << "¿ﬂ∏¯µ» º±≈√¿‘¥œ¥Ÿ" << endl;
+                cout << "ÏûòÎ™ªÎêú ÏÑ†ÌÉùÏûÖÎãàÎã§" << endl;
                 continue;
 			}
 
@@ -132,18 +132,18 @@ void Gamemanager::Battle(Character* player, Monster* monster) {
 
         cout << "[MONSTER TURN]" << endl;
         int monsterAttack = monster->getAttack();
-        cout << monster->getName() << "¿« ∞¯∞›!" << endl;
+        cout << monster->getName() << "Ïùò Í≥µÍ≤©!" << endl;
         player->takeDamage(monsterAttack);
-        cout << ">> " << player->getName() << "ø°∞‘ " << monsterAttack << "√º∑¬ :" << player->getHealth() << ")" << endl;
-        cout << "---------------------------------------------" << endl;
+        cout << ">> " << player->getName() << "ÏóêÍ≤å " << monsterAttack << "Ï≤¥Î†• :" << player->getHealth() << ")" << endl;
+        cout << "O========[|==========================>" << endl;
 
         if (player->isDead()) {
-            cout << player->getName() << "¿Ã(∞°) æ≤∑Ø¡≥¥Ÿ..." << endl;
+            cout << player->getName() << "Ïù¥(Í∞Ä) Ïì∞Îü¨Ï°åÎã§..." << endl;
             system("pause");
 
             system("cls");
 
-            cout << "\n=== [∞‘¿” ø¿πˆ] ===\n";
+            cout << "\n=== [Í≤åÏûÑ Ïò§Î≤Ñ] ===\n";
             system("pause");
 
             break;
@@ -158,16 +158,16 @@ void Gamemanager::Battle(Character* player, Monster* monster) {
 
 
 void Gamemanager::showPlayerStatus(Character* player) {
-    cout << "\n--- ≥ª ¡§∫∏ ---\n";
+    cout << "\n--- ÎÇ¥ Ï†ïÎ≥¥ ---\n";
     player->DisplayStatus();
     cout << "---------------\n";
 }
 
 void Gamemanager::DisplayInventory(Character* player) {
-    cout << "\n--- ¿Œ∫•≈‰∏Æ ---\n";
+    cout << "\n--- Ïù∏Î≤§ÌÜ†Î¶¨ ---\n";
     const auto& inventory = player->GetInventory();
     if (inventory.empty()) {
-        cout << "∞°πÊ¿Ã ∫ÒæÓ¿÷Ω¿¥œ¥Ÿ." << endl;
+        cout << "Í∞ÄÎ∞©Ïù¥ ÎπÑÏñ¥ÏûàÏäµÎãàÎã§." << endl;
     }
     else {
         for (size_t i = 0; i < inventory.size(); ++i) {
@@ -187,11 +187,11 @@ void Gamemanager::goToTown() {
         player->fullHeal();
 
        
-        cout << "∏∂¿ª¿« ø©∞¸ø°º≠ ∆Ìæ»«œ∞‘ »ﬁΩƒ«œø© ∏µÁ √º∑¬¿ª »∏∫π«œ∞Ì, 5 ∞ÒµÂ∏¶ ¡ˆ∫“«ﬂΩ¿¥œ¥Ÿ." << endl;
+        cout << "ÎßàÏùÑÏùò Ïó¨Í¥ÄÏóêÏÑú Ìé∏ÏïàÌïòÍ≤å Ìú¥ÏãùÌïòÏó¨ Î™®Îì† Ï≤¥Î†•ÏùÑ ÌöåÎ≥µÌïòÍ≥†, 5 Í≥®ÎìúÎ•º ÏßÄÎ∂àÌñàÏäµÎãàÎã§." << endl;
     }
     else {
         
-        cout << "∞ÒµÂ∞° ∫Œ¡∑«œø© ø©∞¸ø°º≠ ΩØ ºˆ æ¯Ω¿¥œ¥Ÿ. (« ø‰ ∞ÒµÂ: 5)" << endl;
+        cout << "Í≥®ÎìúÍ∞Ä Î∂ÄÏ°±ÌïòÏó¨ Ïó¨Í¥ÄÏóêÏÑú Ïâ¥ Ïàò ÏóÜÏäµÎãàÎã§. (ÌïÑÏöî Í≥®Îìú: 5)" << endl;
     }
     showPlayerStatus(player);
 }
@@ -199,12 +199,12 @@ void Gamemanager::goToTown() {
 void Gamemanager::goStore(Character* player) {
     system("cls");
     while (true) {
-        cout << "==== ªÛ¡° ====" << endl;
-		cout << "«ˆ¿Á ∞ÒµÂ: " << player->GetGold() << endl;
-		cout << "1.æ∆¿Ã≈€ ±∏∏≈" << endl;
-		cout << "2.æ∆¿Ã≈€ ∆«∏≈" << endl;
-		cout << "3.ªÛ¡° ≥™∞°±‚" << endl;
-        cout << "º±≈√: ";
+        cout << "==== ÏÉÅÏ†ê ====" << endl;
+		cout << "ÌòÑÏû¨ Í≥®Îìú: " << player->GetGold() << endl;
+		cout << "1.ÏïÑÏù¥ÌÖú Íµ¨Îß§" << endl;
+		cout << "2.ÏïÑÏù¥ÌÖú ÌåêÎß§" << endl;
+		cout << "3.ÏÉÅÏ†ê ÎÇòÍ∞ÄÍ∏∞" << endl;
+        cout << "ÏÑ†ÌÉù: ";
 
         int choice;
         cin >> choice;
@@ -227,7 +227,7 @@ void Gamemanager::goStore(Character* player) {
         }
         else
         {
-			cout << "¿ﬂ∏¯µ» ¿‘∑¬¿‘¥œ¥Ÿ." << endl;
+			cout << "ÏûòÎ™ªÎêú ÏûÖÎ†•ÏûÖÎãàÎã§." << endl;
             continue;
         }
 
@@ -236,12 +236,12 @@ void Gamemanager::goStore(Character* player) {
 
 void Gamemanager::buyStore(Character* player) {
     system("cls");
-    cout << "¡¡¿∫π∞∞«¿ª ∞Ò∂Û∫∏Ω√¡ˆø‰" << endl;
-	cout << "«ˆ¿Á ∞ÒµÂ: " << player->GetGold() << endl;
-    cout << "1.√º∑¬ ∆˜º«____10∞ÒµÂ" << endl;
-    cout << "2.»˚¿« øµæ‡____20∞ÒµÂ" << endl;
-    cout << "0.ªÛ¡° ≥™∞°±‚" << endl;
-    cout << "º±≈√: ";
+    cout << "Ï¢ãÏùÄÎ¨ºÍ±¥ÏùÑ Í≥®ÎùºÎ≥¥ÏãúÏßÄÏöî" << endl;
+	cout << "ÌòÑÏû¨ Í≥®Îìú: " << player->GetGold() << endl;
+    cout << "1.Ï≤¥Î†• Ìè¨ÏÖò____10Í≥®Îìú" << endl;
+    cout << "2.ÌûòÏùò ÏòÅÏïΩ____20Í≥®Îìú" << endl;
+    cout << "0.ÏÉÅÏ†ê ÎÇòÍ∞ÄÍ∏∞" << endl;
+    cout << "ÏÑ†ÌÉù: ";
     
     int choice;
     cin >> choice;
@@ -249,48 +249,48 @@ void Gamemanager::buyStore(Character* player) {
         if (player->GetGold() >= 10) {
             player->SpendGold(10);
             player->AddItem(new HealthPotion());
-            cout << "√º∑¬ ∆˜º«¿ª ±∏∏≈«ﬂΩ¿¥œ¥Ÿ" << endl;
+            cout << "Ï≤¥Î†• Ìè¨ÏÖòÏùÑ Íµ¨Îß§ÌñàÏäµÎãàÎã§" << endl;
         } else {
-            cout << "∞ÒµÂ∞° ∏¿⁄∂Û±∫" << endl;
+            cout << "Í≥®ÎìúÍ∞Ä Î™®ÏûêÎùºÍµ∞" << endl;
         }
     } else if (choice == 2) {
         if (player->GetGold() >= 20) {
             player->SpendGold(20);
             player->AddItem(new AttackPotion());
-            cout << "»˚¿« øµæ‡¿ª ±∏∏≈«ﬂΩ¿¥œ¥Ÿ" << endl;
+            cout << "ÌûòÏùò ÏòÅÏïΩÏùÑ Íµ¨Îß§ÌñàÏäµÎãàÎã§" << endl;
         } else {
-            cout << "∞ÒµÂ∞° ∏¿⁄∂Û±∫" << endl;
+            cout << "Í≥®ÎìúÍ∞Ä Î™®ÏûêÎùºÍµ∞" << endl;
         }
     } else if (choice == 0) {
         return;
     } else {
-        cout << "¿ﬂ∏¯µ» º±≈√¿‘¥œ¥Ÿ." << endl;
+        cout << "ÏûòÎ™ªÎêú ÏÑ†ÌÉùÏûÖÎãàÎã§." << endl;
     }
 }
 
 void Gamemanager::sellStore(Character* player) {
     system("cls");
-	cout << "æÓ∂≤π∞∞«¿ª ∆ƒΩ«∞«∞°ø‰" << endl;
-	cout << "«ˆ¿Á ∞ÒµÂ: " << player->GetGold() << endl;
+	cout << "Ïñ¥Îñ§Î¨ºÍ±¥ÏùÑ ÌååÏã§Í±¥Í∞ÄÏöî" << endl;
+	cout << "ÌòÑÏû¨ Í≥®Îìú: " << player->GetGold() << endl;
     vector<int> sellList;
     const auto& inventory = player->GetInventory();
     if (inventory.empty()) {
-        cout << " - ∆» π∞∞« æ¯¿Ω\n";
+        cout << " - Ìåî Î¨ºÍ±¥ ÏóÜÏùå\n";
     }
     else {
         for (size_t i = 0; i < inventory.size(); ++i) {
-            if(inventory[i]->GetName() == "»˚¿« øµæ‡")
+            if(inventory[i]->GetName() == "ÌûòÏùò ÏòÅÏïΩ")
             {
-				cout << i + 1 << ". " << inventory[i]->GetName() << "____12∞ÒµÂ" << endl;
+				cout << i + 1 << ". " << inventory[i]->GetName() << "____12Í≥®Îìú" << endl;
             }
-            else if (inventory[i]->GetName() == "√º∑¬ ∆˜º«")
+            else if (inventory[i]->GetName() == "Ï≤¥Î†• Ìè¨ÏÖò")
             {
-                cout << i + 1 << ". " << inventory[i]->GetName() << "____6∞ÒµÂ" << endl;
+                cout << i + 1 << ". " << inventory[i]->GetName() << "____6Í≥®Îìú" << endl;
             }
             sellList.push_back(i);
         }  
-        cout << "0.ªÛ¡° ≥™∞°±‚" << endl;
-        cout << "º±≈√: ";
+        cout << "0.ÏÉÅÏ†ê ÎÇòÍ∞ÄÍ∏∞" << endl;
+        cout << "ÏÑ†ÌÉù: ";
 
 		int choice;
         cin >> choice;
@@ -300,11 +300,11 @@ void Gamemanager::sellStore(Character* player) {
         else if (choice > 0 && choice <= static_cast<int>(sellList.size())) {
             int Index = sellList[choice - 1];
             Item* itemToSell = inventory[Index];
-            int Price = (itemToSell->GetName() == "»˚¿« øµæ‡") ? 12 : 6;
+            int Price = (itemToSell->GetName() == "ÌûòÏùò ÏòÅÏïΩ") ? 12 : 6;
             player->AddGold(Price);
 			player->RemoveItem(Index);
         } else {
-            cout << "¿ﬂ∏¯µ» º±≈√¿‘¥œ¥Ÿ." << endl;
+            cout << "ÏûòÎ™ªÎêú ÏÑ†ÌÉùÏûÖÎãàÎã§." << endl;
 		}
     }
 }

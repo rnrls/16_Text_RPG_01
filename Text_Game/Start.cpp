@@ -48,7 +48,7 @@ void CreateCharacter() {
 }
 
 
-void StartGameLoop()
+bool StartGameLoop()
 {
     Character* player = Character::GetInstance();
 
@@ -79,7 +79,11 @@ void StartGameLoop()
         {
             Monster* monster = gameManager.GenerateMonster(player->GetLevel());
             gameManager.Battle(player, monster);
-            delete monster;
+
+            if (player->isDead()) {
+                delete monster;
+                return false;
+            }
         }
         break;
         case 4:
@@ -94,6 +98,7 @@ void StartGameLoop()
             break;
         }
     }
+    return true;
 }
 
 int main()
@@ -127,7 +132,13 @@ int main()
         {
         case start_choice::START_GAME:
             CreateCharacter();
-            StartGameLoop();
+           
+            if (!StartGameLoop()) {
+                system("cls");
+                cout << "\n\n   게임 오버! 메인 메뉴로 돌아갑니다.\n\n";
+                system("pause");
+            }
+
             break;
         case start_choice::EXIT:
             return 0;
