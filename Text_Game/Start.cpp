@@ -115,6 +115,7 @@ bool StartGameLoop()
 
                 cout << "\n축하합니다! 보스를 처치했습니다!\n";
                 system("pause");
+                exit(0);
                 delete boss;
             }
             else {  
@@ -174,11 +175,17 @@ int main()
 
             if (!StartGameLoop()) {
                 system("cls");
-                cout << "=== [게임 오버] ===\n";
+                cout << "=== GGGGG  AAA  M     M EEEEE      OOOOO  V       V EEEEE  RRRRR  ===\n";
+                cout << "=== G     A   A MM   MM E         O     O  V     V  E      R    R ===\n";
+                cout << "=== G GGG AAAAA M M M M EEEEE     O     O   V   V   EEEEE  RRRRR  ===\n";
+                cout << "=== G   G A   A M  M  M E         O     O    V V    E      R   R  ===\n";
+                cout << "=== GGGGG A   A M     M EEEEE      OOOOO      V     EEEEE  R    R ===\n";
                 //system("pause");
                 //system("cls");
-                cout << "\n\n 메인 메뉴로 돌아갑니다.\n\n";
+                cout << "\n\n === 프로그램을 종료합니다. === \n\n";
+                //cout << "\n\n === 메인 메뉴로 돌아갑니다. === \n\n";
                 system("pause");
+                exit(0);
             }
 
             break;
