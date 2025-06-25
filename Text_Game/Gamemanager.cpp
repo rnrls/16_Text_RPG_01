@@ -62,7 +62,8 @@ void Gamemanager::Battle(Character* player, Monster* monster) {
     system("pause");
     system("cls");
     while (!player->isDead() && !monster->isDead()) {
-        //*system("cls");
+        system("cls");
+
         cout << "[PLAYER TURN]\n";
         cout << "1. 공격\n2. 아이템 사용\n선택: ";
         int choice;
@@ -171,7 +172,7 @@ void Gamemanager::Battle(Character* player, Monster* monster) {
             return;
         }
 
-       //* system("pause");
+       system("pause");
     }
 
     showPlayerStatus(player);
