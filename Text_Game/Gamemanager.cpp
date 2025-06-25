@@ -192,8 +192,9 @@ void Gamemanager::goToTown() {
     else {
         
         cout << "골드가 부족하여 여관에서 쉴 수 없습니다. (필요 골드: 5)" << endl;
+        cout << "현재 보유 골드: " << player->GetGold() << " 골드" << endl;
     }
-    showPlayerStatus(player);
+    
 }
 
 void Gamemanager::goStore(Character* player) {
