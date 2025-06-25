@@ -141,13 +141,32 @@ void Gamemanager::Battle(Character* player, Monster* monster) {
 
         cout << "==========================================" << endl;
         cout << "[MONSTER TURN]" << endl;
-        int monsterAttack = monster->getAttack();
-        cout << monster->getName() << "의 공격!" << endl;
-        player->takeDamage(monsterAttack);
-        cout << ">> " << player->getName() << "에게 " << monsterAttack << "의 데미지!" << endl;
-        cout << ">> 남은 체력 :" << player->getHealth() << endl;
-        cout << "==========================================\n" << endl;
-
+        Boss* boss = dynamic_cast<Boss*>(monster);
+        if (boss != nullptr)
+        {
+            if (rand() % 10 < 3)
+            {
+                boss->usespecialSkill(player);
+            }
+            else 
+            {
+                int monsterAttack = monster->getAttack();
+                cout << monster->getName() << "의 공격!" << endl;
+                player->takeDamage(monsterAttack);
+                cout << ">> " << player->getName() << "에게 " << monsterAttack << "의 데미지!" << endl;
+                cout << ">> 남은 체력 :" << player->getHealth() << endl;
+                cout << "==========================================\n" << endl;
+            }
+        }
+        else 
+        {
+            int monsterAttack = monster->getAttack();
+            cout << monster->getName() << "의 공격!" << endl;
+            player->takeDamage(monsterAttack);
+            cout << ">> " << player->getName() << "에게 " << monsterAttack << "의 데미지!" << endl;
+            cout << ">> 남은 체력 :" << player->getHealth() << endl;
+            cout << "==========================================\n" << endl;
+        }
         if (player->isDead()) {
             cout << player->getName() << "이(가) 쓰러졌다..." << endl;
             system("pause");

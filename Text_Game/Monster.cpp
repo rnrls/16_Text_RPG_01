@@ -1,4 +1,5 @@
 #include "Monster.h"
+#include "Character.h"
 
 using namespace std;
 
@@ -71,7 +72,22 @@ Manticore::Manticore(int playerlevel) : Monster("만티코어", 550 + (2 * playerlev
 
 
 
-Boss::Boss(int playerlevel) : Monster("미켈라의 칼날 말레니아", 1000, 240)
+Boss::Boss(int playerlevel) : Monster("미켈라의 칼날 말레니아", 1000, 150)
 {
-	cout << "몸은 금빛을 잃고, 피는 부패하니...." << "[" << getName() << "]" << "패배를 모르는 싸움을.\n";
+	cout << "몸은 금빛을 잃고, 피는 부패하니...." << "[" << getName() << "]" << "패배를 모르는 싸움을....\n";
+}
+
+void Boss::corruptionSkill(Character* player)
+{
+	int skilldamage = getAttack() + 150;
+	cout << getName() << "의 스킬 [부패] 시전!!\n";
+	player->takeDamage(skilldamage);
+	cout << getName() << "이(가) " << player->getName() << "에게[" << skilldamage << "]피해를 입혔다." << "(남은 체력: " << player->getHealth() << ")\n";
+	cout << "==========================================\n" << endl;
+}
+
+void Boss::usespecialSkill(Character* player)
+{
+	cout << "보스의 [자세]가 이상합니다.\n";
+	corruptionSkill(player);
 }

@@ -1,7 +1,9 @@
 #pragma once
-#include<iostream>
-#include<string>
+#include <iostream>
+#include <string>
 #include <cstdlib>
+
+class Character;
 
 class Monster
 {
@@ -105,6 +107,12 @@ public:
 
 class Boss :public Monster
 {
+private:
+	
+	void corruptionSkill(Character* player);
+
 public:
 	Boss(int level);
+
+	void usespecialSkill(Character* player);
 };
