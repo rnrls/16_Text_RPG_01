@@ -120,6 +120,7 @@ void Gamemanager::Battle(Character* player, Monster* monster) {
             else
                 player->AddItem(new AttackPotion()); // 30% 확률
 
+            showPlayerStatus(player);
 
             cout << "\n상점을 방문하시겠습니까? (Y/N): ";
             char storeChoice;
@@ -175,7 +176,6 @@ void Gamemanager::Battle(Character* player, Monster* monster) {
        system("pause");
     }
 
-    showPlayerStatus(player);
     system("pause");
 }
 
@@ -294,7 +294,7 @@ void Gamemanager::buyStore(Character* player) {
 	cout << "현재 골드: " << player->GetGold() << endl;
     cout << "1.체력 포션____10골드" << endl;
     cout << "2.힘의 영약____20골드" << endl;
-    cout << "0.상점 나가기" << endl;
+    cout << "3.상점 나가기" << endl;
     cout << "선택: ";
     
     int choice;
@@ -306,6 +306,7 @@ void Gamemanager::buyStore(Character* player) {
             cout << "체력 포션을 구매했습니다" << endl;
         } else {
             cout << "골드가 모자라군" << endl;
+			system("pause");
         }
     } else if (choice == 2) {
         if (player->GetGold() >= 20) {
@@ -314,11 +315,13 @@ void Gamemanager::buyStore(Character* player) {
             cout << "힘의 영약을 구매했습니다" << endl;
         } else {
             cout << "골드가 모자라군" << endl;
+			system("pause");
         }
-    } else if (choice == 0) {
-        return;
+    } else if (choice == 3) {
+		return;   
     } else {
         cout << "잘못된 선택입니다." << endl;
+		system("pause");
     }
 }
 
@@ -330,6 +333,7 @@ void Gamemanager::sellStore(Character* player) {
     const auto& inventory = player->GetInventory();
     if (inventory.empty()) {
         cout << " - 팔 물건 없음\n";
+		system("pause");
     }
     else {
         for (size_t i = 0; i < inventory.size(); ++i) {
