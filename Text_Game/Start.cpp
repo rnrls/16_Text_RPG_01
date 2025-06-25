@@ -56,7 +56,7 @@ bool StartGameLoop()
         cout << "1. 캐릭터 스탯 보기\n";
         cout << "2. 마을로 가기\n";
         cout << "3. 초보자 사냥터\n";
-        cout << "4. 던전 도전\n";
+        cout << "4. 보스 도전\n";
         cout << "5. 게임 종료\n";
         cout << "메뉴를 선택하세요: ";
 
@@ -84,8 +84,21 @@ bool StartGameLoop()
         }
         break;
         case 4:
-            // 던전도 비슷하게 몬스터 생성해서 배틀 호출
-            break;
+        {
+
+            if (player->GetLevel() >= 10) {
+                cout << "\n보스에게 도전합니다!" << endl;
+                Monster* boss = gameManager.GenerateBoss(player->GetLevel());
+                gameManager.Battle(player, boss);
+                delete boss;
+            }
+            else {
+
+                cout << "\n레벨이 부족하여 보스에게 도전할 수 없습니다. (필요 레벨: 10)" << endl;
+                system("pause");
+            }
+        }
+        break;
         case 5:
             isRunning = false;
             break;
