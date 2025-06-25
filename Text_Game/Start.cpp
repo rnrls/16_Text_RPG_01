@@ -53,14 +53,24 @@ bool StartGameLoop()
     bool isRunning = true;
     while (isRunning) {
         system("cls");
+<<<<<<< HEAD
+        cout << "\n===== ?ìŠ¤??RPG =====\n";
+        cout << "1. ìºë¦­???¤íƒ¯ ë³´ê¸°\n";
+        cout << "2. ë§ˆì„ë¡?ê°€ê¸?n";
+        cout << "3. ì´ˆë³´???¬ëƒ¥??n";
+        cout << "4. ?˜ì „ ?„ì „\n";
+        cout << "5. ?„íˆ¬ ê¸°ë¡ ë³´ê¸°\n";        
+        cout << "6. ê²Œìž„ ì¢…ë£Œ\n";
+        cout << "ë©”ë‰´ë¥?? íƒ?˜ì„¸?? ";
+=======
         cout << "\n===== ÅØ½ºÆ® RPG =====\n";
         cout << "1. Ä³¸¯ÅÍ ½ºÅÈ º¸±â\n";
         cout << "2. ¸¶À»·Î °¡±â\n";
-        cout << "3. ÃÊº¸ÀÚ »ç³ÉÅÍ\n";
-        cout << "4. ´øÀü µµÀü\n";
-        cout << "5. ÀüÅõ ±â·Ï º¸±â\n";        
-        cout << "6. °ÔÀÓ Á¾·á\n";
+        cout << "3. »ç³ÉÅÍ °¡±â\n";
+        cout << "4. º¸½º µµÀü\n";
+        cout << "5. °ÔÀÓ Á¾·á\n";
         cout << "¸Þ´º¸¦ ¼±ÅÃÇÏ¼¼¿ä: ";
+>>>>>>> 43481e40e472be141afcbdd6726212efbad299d0
 
         int Choice;
         cin >> Choice;
@@ -86,8 +96,26 @@ bool StartGameLoop()
         }
         break;
         case 4:
+<<<<<<< HEAD
             
             break;
+=======
+        {
+
+            if (player->GetLevel() >= 10) {
+                cout << "\nº¸½º¿¡°Ô µµÀüÇÕ´Ï´Ù!!" << endl;
+                Monster* boss = gameManager.GenerateBoss(player->GetLevel());
+                gameManager.Battle(player, boss);
+                delete boss;
+            }
+            else {
+
+                cout << "\n·¹º§ÀÌ ºÎÁ·ÇÏ¿© º¸½º¿¡°Ô µµÀüÇÒ ¼ö ¾ø½À´Ï´Ù. (ÇÊ¿ä ·¹º§: 10)" << endl;
+                system("pause");
+            }
+        }
+        break;
+>>>>>>> 43481e40e472be141afcbdd6726212efbad299d0
         case 5:
             gameManager.ShowStatistics();   
             system("pause");
