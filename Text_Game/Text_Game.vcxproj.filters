@@ -30,9 +30,6 @@
     <ClCompile Include="Monster.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="AttackPotion.cpp">
-      <Filter>소스 파일\Item</Filter>
-    </ClCompile>
     <ClCompile Include="HealthPotion.cpp">
       <Filter>소스 파일\Item</Filter>
     </ClCompile>
@@ -45,8 +42,8 @@
     <ClCompile Include="Start.cpp">
       <Filter>소스 파일\menu</Filter>
     </ClCompile>
-    <ClCompile Include="AttackPotion.h">
-      <Filter>헤더 파일\Item</Filter>
+    <ClCompile Include="AttackPotion.cpp">
+      <Filter>소스 파일\Item</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -63,6 +60,9 @@
       <Filter>헤더 파일\Item</Filter>
     </ClInclude>
     <ClInclude Include="Item.h">
+      <Filter>헤더 파일\Item</Filter>
+    </ClInclude>
+    <ClInclude Include="AttackPotion.h">
       <Filter>헤더 파일\Item</Filter>
     </ClInclude>
   </ItemGroup>
