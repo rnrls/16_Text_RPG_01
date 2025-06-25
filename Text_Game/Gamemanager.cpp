@@ -59,7 +59,7 @@ Monster* Gamemanager::GenerateBoss(int level)
 void Gamemanager::Battle(Character* player, Monster* monster) {
     cout << "\n!! 야생의 " << monster->getName() << "이(가) 나타났다! !!" << endl;
     system("pause");
-
+    system("cls");
     while (!player->isDead() && !monster->isDead()) {
         //*system("cls");
         cout << "[PLAYER TURN]\n";
@@ -69,10 +69,13 @@ void Gamemanager::Battle(Character* player, Monster* monster) {
 
         if (choice == 1) {
             int playerAttack = player->getAttack();
+            cout << "\n==========================================" << endl;
+            cout << "[PLAYER TURN]" << endl;
             cout << player->getName() << "의 공격!" << endl;
             monster->takeDamage(playerAttack);
-            cout << ">> " << monster->getName() << "에게 " << playerAttack << "의 데미지! (남은 체력: " << monster->getHealth() << ")" << endl;
-            cout << "O========[|==========================>" << endl;
+            cout << ">> " << monster->getName() << "에게 " << playerAttack << "의 데미지!" << endl;
+            cout << ">> 남은 체력 : " << monster->getHealth() << endl;
+            cout << "==========================================\n" << endl;
         }
         else if (choice == 2) {
             DisplayInventory(player);
@@ -130,12 +133,14 @@ void Gamemanager::Battle(Character* player, Monster* monster) {
             break;
         }
 
+        cout << "==========================================" << endl;
         cout << "[MONSTER TURN]" << endl;
         int monsterAttack = monster->getAttack();
         cout << monster->getName() << "의 공격!" << endl;
         player->takeDamage(monsterAttack);
-        cout << ">> " << player->getName() << "에게 " << monsterAttack << "체력 :" << player->getHealth() << ")" << endl;
-        cout << "O========[|==========================>" << endl;
+        cout << ">> " << player->getName() << "에게 " << monsterAttack << "의 데미지!" << endl;
+        cout << ">> 남은 체력 :" << player->getHealth() << endl;
+        cout << "==========================================\n" << endl;
 
         if (player->isDead()) {
             cout << player->getName() << "이(가) 쓰러졌다..." << endl;
