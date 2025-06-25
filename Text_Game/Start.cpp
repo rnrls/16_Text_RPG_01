@@ -60,7 +60,8 @@ void StartGameLoop()
         cout << "2. 마을로 가기\n";
         cout << "3. 초보자 사냥터\n";
         cout << "4. 던전 도전\n";
-        cout << "5. 게임 종료\n";
+        cout << "5. 전투 기록 보기\n";        
+        cout << "6. 게임 종료\n";
         cout << "메뉴를 선택하세요: ";
 
         int Choice;
@@ -83,10 +84,14 @@ void StartGameLoop()
         }
         break;
         case 4:
-            // 던전도 비슷하게 몬스터 생성해서 배틀 호출
+            
             break;
         case 5:
-            isRunning = false;
+            gameManager.ShowStatistics();   
+            system("pause");
+            break;;
+        case 6:
+            isRunning = false;            
             break;
         default:
             cout << "잘못된 선택입니다.\n";

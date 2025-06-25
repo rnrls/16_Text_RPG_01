@@ -15,7 +15,7 @@ private:
     int Attack;
     int Exp;
     int Gold;
-    int defeatedMonsters;
+    int defeatedMonsters = 0;
     std::vector<Item*> Inventory;
 
     Character(const std::string& Name);
@@ -23,7 +23,7 @@ private:
 public:
     static Character* GetInstance(const std::string& name = "");
 
-    void DisplayStatus();       
+    void DisplayStatus();
     void LevelUp();
     bool isDead() const;
 
