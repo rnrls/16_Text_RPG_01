@@ -55,6 +55,7 @@ void Character::DisplayStatus() {  // ´ë¹®ÀÚ D
     cout << "========================" << endl;
 }
 
+
 void Character::IncrementDefeatedMonstersCount() {
     defeatedMonsters++;
 }

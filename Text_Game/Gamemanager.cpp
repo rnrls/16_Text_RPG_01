@@ -8,7 +8,8 @@
 #include <cstdlib>
 #include <ctime>
 #include <limits>
-#include <map> 
+#include <map>
+#include <string>
 
 using namespace std;
 
@@ -86,24 +87,13 @@ void Gamemanager::Battle(Character* player, Monster* monster) {
                 cout << "인벤토리 종료\n";
                 continue;
             }
-
-            int selectedIndex = stoi(choice_exit) - 1;
-
-            const auto& inventory = player->GetInventory();
-            map<string, int> itemCounts;
-            vector<string> itemNames;
-            for (const auto& item : inventory) {
-                string name = item->GetName();
-                if (itemCounts[name] == 0) itemNames.push_back(name);
-                itemCounts[name]++;
-            }
-
-            if (selectedIndex >= 0 && selectedIndex < (int)itemNames.size()) {
-                string selectedName = itemNames[selectedIndex];
-                player->useItemByName(selectedName); // 이름으로 아이템 사용
-            }
-            else {
-                cout << "잘못된 선택입니다.\n";
+            else
+            {
+                cin.ignore();
+                int itemIndex = stoi(choice_exit);
+                --itemIndex;
+                player->UseItem(itemIndex);
+                addItemUseLog();
             }
             continue;
 
@@ -116,10 +106,12 @@ void Gamemanager::Battle(Character* player, Monster* monster) {
         if (monster->isDead()) {
             cout << monster->getName() << "을(를) 처치했다! " << endl;
             player->IncrementDefeatedMonstersCount();
+            incrementKillLog(monster->getName());
             int exp = (rand() % 21 + 35);
             player->AddExp(exp);
             int gold = (rand() % 11 + 20);
             player->AddGold(gold);
+            addGoldLog(gold);
 
             int randNum = rand() % 10; 
             if (randNum < 7)
@@ -222,6 +214,28 @@ void Gamemanager::goToTown() {
         cout << "현재 보유 골드: " << player->GetGold() << " 골드" << endl;
     }
     
+}
+
+void Gamemanager::incrementKillLog(const std::string& name) {
+    killLog[name]++;
+}
+
+void Gamemanager::addGoldLog(int amount) {
+    totalGoldEarned += amount;
+}
+
+void Gamemanager::addItemUseLog() {
+    totalItemUsed++;
+}
+
+void Gamemanager::ShowStatistics() const {
+    std::cout << "\n===== 게임 통계 =====\n";
+    std::cout << ">> 몬스터 처치 내역\n";
+    for (const auto& [name, count] : killLog) {
+        std::cout << "- " << name << ": " << count << "마리\n";
+    }
+    std::cout << "\n>> 총 골드 획득량: " << totalGoldEarned << " G\n";
+    std::cout << ">> 총 아이템 사용 횟수: " << totalItemUsed << "회\n";
 }
 
 void Gamemanager::goStore(Character* player) {
