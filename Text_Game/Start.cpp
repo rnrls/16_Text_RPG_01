@@ -3,6 +3,7 @@
 #include <limits>
 #include "Gamemanager.h"
 #include "Character.h"
+#include "Monster.h"
 
 using namespace std;
 
@@ -22,14 +23,14 @@ void CreateCharacter() {
     while (true) {
         system("cls");
         cout << "==============================\n";
-        cout << "        [ìºë¦­í„° ìƒì„±]         \n";
+        cout << "        [Ä³¸¯ÅÍ »ý¼º]         \n";
         cout << "==============================\n";
 
-        cout << "ì´ë¦„ì„ ìž…ë ¥í•˜ì„¸ìš”: ";
+        cout << "ÀÌ¸§À» ÀÔ·ÂÇÏ¼¼¿ä: ";
         getline(cin, name);
 
         if (name.empty() || name.find_first_not_of(' ') == string::npos) {
-            cout << "\n[ì˜¤ë¥˜] ì´ë¦„ì€ ê³µë°±ìœ¼ë¡œë§Œ êµ¬ì„±ë  ìˆ˜ ì—†ìŠµë‹ˆë‹¤. ë‹¤ì‹œ ìž…ë ¥í•´ì£¼ì„¸ìš”.\n";
+            cout << "\n[¿À·ù] ÀÌ¸§Àº °ø¹éÀ¸·Î¸¸ ±¸¼ºµÉ ¼ö ¾ø½À´Ï´Ù. ´Ù½Ã ÀÔ·ÂÇØÁÖ¼¼¿ä.\n";
             system("pause");
         }
         else {
@@ -37,10 +38,10 @@ void CreateCharacter() {
         }
     }
     system("cls");
-    cout << "[" << name << "]" << "\n" << "\nìºë¦­í„° ì´ë¦„ ë“±ë¡ ì™„ë£Œ!\n";
-    cout << "\nâ˜… ========== â˜… ========== â˜… ========== â˜…\n";
+    cout << "[" << name << "]" << "\n" << "\nÄ³¸¯ÅÍ ÀÌ¸§ µî·Ï ¿Ï·á!\n";
+    cout << "\n¡Ú ========== ¡Ú ========== ¡Ú ========== ¡Ú\n";
     Character* player = Character::GetInstance(name);
-    cout << "\nâ˜… ========== â˜… ========== â˜… ========== â˜…\n";
+    cout << "\n¡Ú ========== ¡Ú ========== ¡Ú ========== ¡Ú\n";
     system("pause");
 }
 
@@ -52,13 +53,13 @@ bool StartGameLoop()
     bool isRunning = true;
     while (isRunning) {
         system("cls");
-        cout << "\n===== í…ìŠ¤íŠ¸ RPG =====\n";
-        cout << "1. ìºë¦­í„° ìŠ¤íƒ¯ ë³´ê¸°\n";
-        cout << "2. ë§ˆì„ë¡œ ê°€ê¸°\n";
-        cout << "3. ì‚¬ëƒ¥í„° ê°€ê¸°\n";
-        cout << "4. ë³´ìŠ¤ ë„ì „\n";
-        cout << "5. ê²Œìž„ ì¢…ë£Œ\n";
-        cout << "ë©”ë‰´ë¥¼ ì„ íƒí•˜ì„¸ìš”: ";
+        cout << "\n===== ÅØ½ºÆ® RPG =====\n";
+        cout << "1. Ä³¸¯ÅÍ ½ºÅÈ º¸±â\n";
+        cout << "2. ¸¶À»·Î °¡±â\n";
+        cout << "3. »ç³ÉÅÍ °¡±â\n";
+        cout << "4. º¸½º µµÀü\n";
+        cout << "5. °ÔÀÓ Á¾·á\n";
+        cout << "¸Þ´º¸¦ ¼±ÅÃÇÏ¼¼¿ä: ";
 
         int Choice;
         cin >> Choice;
@@ -87,14 +88,14 @@ bool StartGameLoop()
         {
 
             if (player->GetLevel() >= 10) {
-                cout << "\në³´ìŠ¤ì—ê²Œ ë„ì „í•©ë‹ˆë‹¤!!" << endl;
+                cout << "\nº¸½º¿¡°Ô µµÀüÇÕ´Ï´Ù!!" << endl;
                 Monster* boss = gameManager.GenerateBoss(player->GetLevel());
                 gameManager.Battle(player, boss);
                 delete boss;
             }
             else {
 
-                cout << "\në ˆë²¨ì´ ë¶€ì¡±í•˜ì—¬ ë³´ìŠ¤ì—ê²Œ ë„ì „í•  ìˆ˜ ì—†ìŠµë‹ˆë‹¤. (í•„ìš” ë ˆë²¨: 10)" << endl;
+                cout << "\n·¹º§ÀÌ ºÎÁ·ÇÏ¿© º¸½º¿¡°Ô µµÀüÇÒ ¼ö ¾ø½À´Ï´Ù. (ÇÊ¿ä ·¹º§: 10)" << endl;
                 system("pause");
             }
         }
@@ -103,7 +104,7 @@ bool StartGameLoop()
             isRunning = false;
             break;
         default:
-            cout << "ìž˜ëª»ëœ ì„ íƒìž…ë‹ˆë‹¤.\n";
+            cout << "Àß¸øµÈ ¼±ÅÃÀÔ´Ï´Ù.\n";
             system("pause");
             break;
         }
@@ -124,8 +125,8 @@ int main()
         system("cls");
 
         cout << "==============[Text RPG]=============\n";
-        cout << "            1. ê²Œìž„ì‹œìž‘              \n";
-        cout << "            2. ì¢…ë£Œí•˜ê¸°              \n";
+        cout << "            1. °ÔÀÓ½ÃÀÛ              \n";
+        cout << "            2. Á¾·áÇÏ±â              \n";
         cout << "=====================================\n";
 
         int choice;
@@ -145,7 +146,7 @@ int main()
 
             if (!StartGameLoop()) {
                 system("cls");
-                cout << "\n\n  ê²Œìž„ ì˜¤ë²„! ë©”ì¸ ë©”ë‰´ë¡œ ëŒì•„ê°‘ë‹ˆë‹¤.\n\n";
+                cout << "\n\n  °ÔÀÓ ¿À¹ö! ¸ÞÀÎ ¸Þ´º·Î µ¹¾Æ°©´Ï´Ù.\n\n";
                 system("pause");
             }
 
