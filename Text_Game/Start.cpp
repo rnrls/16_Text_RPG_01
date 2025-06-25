@@ -57,10 +57,12 @@ bool StartGameLoop()
 
         cout << "\n===== 텍스트 RPG =====\n";
         cout << "1. 캐릭터 스탯 보기\n";
-        cout << "2. 여관으로 가기\n";
-        cout << "3. 사냥터로 가기\n";
-        cout << "4. 보스 도전\n";
-        cout << "5. 게임 종료\n";
+        cout << "2. 마을로 가기\n";
+        cout << "3. 상점 가기\n";
+        cout << "4. 초보자 사냥터\n";
+        cout << "5. 던전 도전\n";
+        cout << "6. 전투 기록 보기\n";
+        cout << "7. 게임 종료\n";
         cout << "메뉴를 선택하세요: ";
 
         int Choice;
