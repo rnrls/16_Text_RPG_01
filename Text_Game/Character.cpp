@@ -1,6 +1,7 @@
 #include "Character.h"
 #include <iostream>
 #include <algorithm>
+#include <map>
 
 using namespace std;
 
@@ -32,12 +33,23 @@ void Character::DisplayStatus() {  // 대문자 D
     cout << "처치한 몬스터: " << defeatedMonsters << "마리" << endl;
 
     cout << "보유 아이템:\n";
-    if (Inventory.empty()) {
+    
+    if (Inventory.empty()) 
+    {
         cout << " - 없음\n";
     }
     else {
-        for (size_t i = 0; i < Inventory.size(); ++i) {
-            cout << i + 1 << ". " << Inventory[i]->GetName() << "\n";
+        
+        map<string, int> itemCounts;
+        for (const auto& item : Inventory) 
+        {
+            itemCounts[item->GetName()]++; 
+        }
+
+        int index = 1;
+        for (const auto& pair : itemCounts) 
+        {
+            cout << index++ << ". " << pair.first << " x" << pair.second << "\n";
         }
     }
     cout << "========================" << endl;
