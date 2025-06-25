@@ -87,8 +87,6 @@ bool StartGameLoop()
         }
         break;
         case 4:
-            
-            break;
         {
 
             if (player->GetLevel() >= 1) {
