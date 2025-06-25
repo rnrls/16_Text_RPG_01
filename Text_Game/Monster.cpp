@@ -80,6 +80,8 @@ Boss::Boss(int playerlevel) : Monster("미켈라의 칼날 말레니아", 1000, 150)
 void Boss::corruptionSkill(Character* player)
 {
 	int skilldamage = getAttack() + 150;
+	cout << "==========================================" << endl;
+	cout << "[MONSTER TURN]" << endl;
 	cout << getName() << "의 스킬 [부패] 시전!!\n";
 	player->takeDamage(skilldamage);
 	cout << getName() << "이(가) " << player->getName() << "에게[" << skilldamage << "]피해를 입혔다." << "(남은 체력: " << player->getHealth() << ")\n";
@@ -89,5 +91,6 @@ void Boss::corruptionSkill(Character* player)
 void Boss::usespecialSkill(Character* player)
 {
 	cout << "보스의 [자세]가 이상합니다.\n";
+	cout << "==========================================\n" << endl;
 	corruptionSkill(player);
 }
