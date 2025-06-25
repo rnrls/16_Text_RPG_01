@@ -114,3 +114,10 @@ public:
 	Nightmare(int level);
 };
 
+
+
+class Boss :public Monster
+{
+public:
+	Boss(int level);
+};

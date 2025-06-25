@@ -49,6 +49,13 @@ Monster* Gamemanager::GenerateMonster(int level) {
     return monster;
 }
 
+Monster* Gamemanager::GenerateBoss(int level)
+{
+    Monster* monster = nullptr;
+    monster = new Boss(level);
+    return monster;
+}
+
 void Gamemanager::Battle(Character* player, Monster* monster) {
     cout << "\n!! 야생의 " << monster->getName() << "이(가) 나타났다! !!" << endl;
     system("pause");

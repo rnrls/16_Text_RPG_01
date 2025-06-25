@@ -47,3 +47,8 @@ Nightmare::Nightmare(int playerlevel) : Monster("나이트 메어", 380 + (2 * player
 Manticore::Manticore(int playerlevel) : Monster("만티코어", 550 + (2 * playerlevel), 120 + (4 * playerlevel)) {}
 
 
+
+Boss::Boss(int playerlevel) : Monster("미켈라의 칼날 말레니아", 1000, 240)
+{
+	cout << "몸은 금빛을 잃고, 피는 부패하니...." << "[" << getName() << "]" << "패배를 모르는 싸움을.\n";
+}

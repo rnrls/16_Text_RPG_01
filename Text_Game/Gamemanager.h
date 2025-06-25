@@ -17,6 +17,8 @@ public:
     void goStore(Character* player);
 	void buyStore(Character* player);
     void sellStore(Character* player);
+
+    Monster* GenerateBoss(int level);
 };
 
 
