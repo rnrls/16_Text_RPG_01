@@ -2,6 +2,29 @@
 
 using namespace std;
 
+
+int Monster::getAttack()
+{
+	int damage_variance = (rand() % 11);
+	int final_damage = attack + damage_variance;
+
+	return final_damage;
+}
+
+void Monster::takeDamage(int damage)
+{
+	health -= damage;
+	if (health < 0)
+	{
+		health = 0;
+	}
+}
+
+bool Monster::isDead() const
+{
+	return health <= 0;
+}
+
 //Àú·¾
 Goblin::Goblin(int playerlevel) : Monster("°íºí¸°",  35 + (5 * playerlevel), 5 + (10 * playerlevel)) {}
 

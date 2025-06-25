@@ -15,22 +15,9 @@ protected:
 public:
 	virtual std::string getName() { return name; }
 	virtual int getHealth() { return health; }
-	virtual int getAttack()
-	{
-		int damage_variance = (rand() % 11);
-		int final_damage = attack + damage_variance;
-
-		return final_damage;
-	}
-	virtual void takeDamage(int damage)
-	{
-		health -= damage;
-		if (health < 0)
-		{
-			health = 0;
-		}
-	}
-	virtual bool isDead() const { return health <= 0; }
+	virtual int getAttack();
+	virtual void takeDamage(int damage);
+	virtual bool isDead() const;
 
 	virtual ~Monster() {}
 };
