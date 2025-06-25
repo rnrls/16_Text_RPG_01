@@ -58,10 +58,11 @@ bool StartGameLoop()
         cout << "\n===== 텍스트 RPG =====\n";
         cout << "1. 캐릭터 스탯 보기\n";
         cout << "2. 마을로 가기\n";
-        cout << "3. 초보자 사냥터\n";
-        cout << "4. 던전 도전\n";
-        cout << "5. 전투 기록 보기\n";
-        cout << "6. 게임 종료\n";
+        cout << "3. 상점\n";
+        cout << "4. 사냥터\n";
+        cout << "5. 보스\n";
+        cout << "6. 전투 기록 보기\n";
+        cout << "7. 게임 종료\n";
         cout << "메뉴를 선택하세요: ";
 
         int Choice;
@@ -77,6 +78,10 @@ bool StartGameLoop()
             system("pause");
             break;
         case 3:
+            gameManager.goStore(player);
+            system("pause");
+            break;
+        case 4:
         {
             Monster* monster = gameManager.GenerateMonster(player->GetLevel());
             gameManager.Battle(player, monster);
@@ -87,7 +92,7 @@ bool StartGameLoop()
             }
         }
         break;
-        case 4:
+        case 5:
         {
 
             if (player->GetLevel() >= 10) {
@@ -104,11 +109,11 @@ bool StartGameLoop()
         }
         break;
 
-        case 5:
+        case 6:
             gameManager.ShowStatistics();   
             system("pause");
             break;;
-        case 6:
+        case 7:
             isRunning = false;            
             break;
         default:
