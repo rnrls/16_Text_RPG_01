@@ -87,23 +87,38 @@ bool StartGameLoop()
             gameManager.Battle(player, monster);
 
             if (player->isDead()) {
-                delete monster;
+                system("pause");
+                system("cls");
+                cout << "\n당신은 사냥터에서 쓰러졌습니다...\n";
+                system("pause");
                 return false;
             }
+
+            delete monster;
         }
         break;
         case 5:
         {
-
-            if (player->GetLevel() >= 10) {
+            if (player->GetLevel() >= 1) {
                 cout << "\n보스에게 도전합니다!" << endl;              
                 Monster* boss = gameManager.GenerateBoss(player->GetLevel());
                 gameManager.Battle(player, boss);
+
+                if (player->isDead()) {
+                    delete boss;
+                    system("pause");
+                    system("cls");
+                    cout << "\n 당신은 보스에게 패배했습니다... \n";
+                    system("pause");
+                    return false;
+                }
+
+                cout << "\n축하합니다! 보스를 처치했습니다!\n";
+                system("pause");
                 delete boss;
             }
             else {  
-
-                cout << "\n레벨이 부족하여 보스에게 도전할 수 없습니다. (필요 레벨: 10)" << endl;
+                cout << "\n레벨이 부족하여 보스에게 도전할 수 없습니다. (필요 레벨: 1)" << endl;
                 system("pause");
             }
         }
@@ -159,7 +174,10 @@ int main()
 
             if (!StartGameLoop()) {
                 system("cls");
-                cout << "\n\n  게임 오버! 메인 메뉴로 돌아갑니다.\n\n";
+                cout << "=== [게임 오버] ===\n";
+                system("pause");
+                system("cls");
+                cout << "\n\n 메인 메뉴로 돌아갑니다.\n\n";
                 system("pause");
             }
 
