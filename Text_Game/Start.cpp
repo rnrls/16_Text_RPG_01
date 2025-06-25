@@ -89,13 +89,13 @@ bool StartGameLoop()
         case 4:
         {
 
-            if (player->GetLevel() >= 1) {
-                cout << "\n보스에게 도전합니다!!" << endl;
+            if (player->GetLevel() >= 10) {
+                cout << "\n보스에게 도전합니다!" << endl;              
                 Monster* boss = gameManager.GenerateBoss(player->GetLevel());
                 gameManager.Battle(player, boss);
                 delete boss;
             }
-            else {
+            else {  
 
                 cout << "\n레벨이 부족하여 보스에게 도전할 수 없습니다. (필요 레벨: 10)" << endl;
                 system("pause");
