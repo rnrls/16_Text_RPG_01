@@ -22,14 +22,14 @@ void CreateCharacter() {
     while (true) {
         system("cls");
         cout << "==============================\n";
-        cout << "        [ĳ���� ����]         \n";
+        cout << "        [캐릭터 생성]         \n";
         cout << "==============================\n";
 
-        cout << "�̸��� �Է��ϼ���: ";
+        cout << "이름을 입력하세요: ";
         getline(cin, name);
 
         if (name.empty() || name.find_first_not_of(' ') == string::npos) {
-            cout << "\n[����] �̸��� �������θ� ������ �� �����ϴ�. �ٽ� �Է����ּ���.\n";
+            cout << "\n[오류] 이름은 공백으로만 구성될 수 없습니다. 다시 입력해주세요.\n";
             system("pause");
         }
         else {
@@ -37,10 +37,10 @@ void CreateCharacter() {
         }
     }
     system("cls");
-    cout << "[" << name << "]" << "\n"<< "ĳ���� �̸� ��� �Ϸ�!\n\n";
-    cout << "�� ========== �� ========== �� ========== ��\n";
+    cout << "[" << name << "]" << "\n" << "\n캐릭터 이름 등록 완료!\n";
+    cout << "\n★ ========== ★ ========== ★ ========== ★\n";
     Character* player = Character::GetInstance(name);
-    cout << "\n�� ========== �� ========== �� ========== ��\n";
+    cout << "\n★ ========== ★ ========== ★ ========== ★\n";
     system("pause");
 }
 
@@ -52,13 +52,13 @@ bool StartGameLoop()
     bool isRunning = true;
     while (isRunning) {
         system("cls");
-        cout << "\n===== �ؽ�Ʈ RPG =====\n";
-        cout << "1. ĳ���� ���� ����\n";
-        cout << "2. ������ ����\n";
-        cout << "3. �ʺ��� �����\n";
-        cout << "4. ���� ����\n";
-        cout << "5. ���� ����\n";
-        cout << "�޴��� �����ϼ���: ";
+        cout << "\n===== 텍스트 RPG =====\n";
+        cout << "1. 캐릭터 스탯 보기\n";
+        cout << "2. 마을로 가기\n";
+        cout << "3. 사냥터 가기\n";
+        cout << "4. 보스 도전\n";
+        cout << "5. 게임 종료\n";
+        cout << "메뉴를 선택하세요: ";
 
         int Choice;
         cin >> Choice;
@@ -87,14 +87,14 @@ bool StartGameLoop()
         {
 
             if (player->GetLevel() >= 10) {
-                cout << "\n�������� �����մϴ�!" << endl;
+                cout << "\n보스에게 도전합니다!!" << endl;
                 Monster* boss = gameManager.GenerateBoss(player->GetLevel());
                 gameManager.Battle(player, boss);
                 delete boss;
             }
             else {
 
-                cout << "\n������ �����Ͽ� �������� ������ �� �����ϴ�. (�ʿ� ����: 10)" << endl;
+                cout << "\n레벨이 부족하여 보스에게 도전할 수 없습니다. (필요 레벨: 10)" << endl;
                 system("pause");
             }
         }
@@ -103,7 +103,7 @@ bool StartGameLoop()
             isRunning = false;
             break;
         default:
-            cout << "�߸��� �����Դϴ�.\n";
+            cout << "잘못된 선택입니다.\n";
             system("pause");
             break;
         }
@@ -124,8 +124,8 @@ int main()
         system("cls");
 
         cout << "==============[Text RPG]=============\n";
-        cout << "            1. ���ӽ���              \n";
-        cout << "            2. �����ϱ�              \n";
+        cout << "            1. 게임시작              \n";
+        cout << "            2. 종료하기              \n";
         cout << "=====================================\n";
 
         int choice;
@@ -142,10 +142,10 @@ int main()
         {
         case start_choice::START_GAME:
             CreateCharacter();
-           
+
             if (!StartGameLoop()) {
                 system("cls");
-                cout << "\n\n   ���� ����! ���� �޴��� ���ư��ϴ�.\n\n";
+                cout << "\n\n  게임 오버! 메인 메뉴로 돌아갑니다.\n\n";
                 system("pause");
             }
 
