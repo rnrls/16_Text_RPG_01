@@ -124,7 +124,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="AttackPotion.cpp" />
-    <ClCompile Include="AttackPotion.h" />
     <ClCompile Include="Character.cpp" />
     <ClCompile Include="Gamemanager.cpp" />
     <ClCompile Include="HealthPotion.cpp" />
@@ -133,6 +132,7 @@
     <ClCompile Include="Start.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AttackPotion.h" />
     <ClInclude Include="Character.h" />
     <ClInclude Include="Gamemanager.h" />
     <ClInclude Include="HealthPotion.h" />

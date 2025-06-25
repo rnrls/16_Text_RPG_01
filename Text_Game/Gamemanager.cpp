@@ -8,7 +8,7 @@
 #include <cstdlib>
 #include <ctime>
 #include <limits>
-
+#include <map> 
 
 using namespace std;
 
@@ -79,21 +79,34 @@ void Gamemanager::Battle(Character* player, Monster* monster) {
         }
         else if (choice == 2) {
             DisplayInventory(player);
-            cout << "아이템이 없습니다.(EXIT: 0): ";
+            cout << "아이템 번호를 선택하세요. (EXIT: 0): ";
             string choice_exit;
             cin >> choice_exit;
-            if (choice_exit == "0")
-            {
+            if (choice_exit == "0") {
                 cout << "인벤토리 종료\n";
                 continue;
             }
-            else
-            {
-                cin.ignore();
-                int itemIndex = stoi(choice_exit);
-                --itemIndex;
-                player->UseItem(itemIndex);
+
+            int selectedIndex = stoi(choice_exit) - 1;
+
+            const auto& inventory = player->GetInventory();
+            map<string, int> itemCounts;
+            vector<string> itemNames;
+            for (const auto& item : inventory) {
+                string name = item->GetName();
+                if (itemCounts[name] == 0) itemNames.push_back(name);
+                itemCounts[name]++;
             }
+
+            if (selectedIndex >= 0 && selectedIndex < (int)itemNames.size()) {
+                string selectedName = itemNames[selectedIndex];
+                player->useItemByName(selectedName); // 이름으로 아이템 사용
+            }
+            else {
+                cout << "잘못된 선택입니다.\n";
+            }
+            continue;
+
         }
         else {
             cout << "잘못된 선택입니다.\n";
@@ -108,11 +121,12 @@ void Gamemanager::Battle(Character* player, Monster* monster) {
             int gold = (rand() % 11 + 20);
             player->AddGold(gold);
 
-            int itemType = rand() % 2;
-            if (itemType == 0)
-                player->AddItem(new HealthPotion());
+            int randNum = rand() % 10; 
+            if (randNum < 7)
+                player->AddItem(new HealthPotion()); // 70% 확률
             else
-                player->AddItem(new AttackPotion());
+                player->AddItem(new AttackPotion()); // 30% 확률
+
 
             cout << "\n상점을 방문하시겠습니까? (Y/N): ";
             char storeChoice;
@@ -175,9 +189,17 @@ void Gamemanager::DisplayInventory(Character* player) {
         cout << "가방이 비어있습니다." << endl;
     }
     else {
-        for (size_t i = 0; i < inventory.size(); ++i) {
-            cout << i + 1 << ". " << inventory[i]->GetName() << endl;
-        }
+        map<string, int> itemCounts;
+vector<string> itemNames;
+for (const auto& item : inventory) {
+    string name = item->GetName();
+    if (itemCounts[name] == 0) itemNames.push_back(name);
+    itemCounts[name]++;
+}
+for (size_t i = 0; i < itemNames.size(); ++i) {
+    cout << i + 1 << ". " << itemNames[i] << " x" << itemCounts[itemNames[i]] << endl;
+}
+
     }
     cout << "----------------\n";
 }
