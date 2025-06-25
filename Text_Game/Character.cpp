@@ -22,6 +22,11 @@ Character* Character::GetInstance(const string& name) {
     return instance;
 }
 
+void Character::ResetCharacter() {
+    delete instance;
+    instance = nullptr;
+} 
+
 void Character::DisplayStatus() {  // 대문자 D
     cout << "===== 캐릭터 상태 =====" << endl;
     cout << "이름: " << Name << endl;

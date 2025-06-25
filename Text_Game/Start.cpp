@@ -171,6 +171,7 @@ int main()
         switch (static_cast<start_choice>(choice))
         {
         case start_choice::START_GAME:
+            Character::ResetCharacter();
             CreateCharacter();
 
             if (!StartGameLoop()) {
