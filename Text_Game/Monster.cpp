@@ -72,7 +72,7 @@ Manticore::Manticore(int playerlevel) : Monster("만티코어", 550 + (2 * playerlev
 
 
 
-Boss::Boss(int playerlevel) : Monster("미켈라의 칼날 말레니아", 1, 150)
+Boss::Boss(int playerlevel) : Monster("미켈라의 칼날 말레니아", 200, 150)
 {
 	cout << "몸은 금빛을 잃고, 피는 부패하니...." << "[" << getName() << "]" << "패배를 모르는 싸움을....\n";
 }

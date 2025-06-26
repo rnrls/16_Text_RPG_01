@@ -121,7 +121,7 @@ bool StartGameLoop()
         break;
         case 5:
         {
-            if (player->GetLevel() >= 1) {
+            if (player->GetLevel() >= 2) {
                 cout << "\n보스에게 도전합니다!" << endl;              
                 Monster* boss = gameManager.GenerateBoss(player->GetLevel());
                 gameManager.Battle(player, boss);
@@ -150,7 +150,7 @@ bool StartGameLoop()
                 exit(0);
             }
             else {  
-                cout << "\n레벨이 부족하여 보스에게 도전할 수 없습니다. (필요 레벨: 1)" << endl;
+                cout << "\n레벨이 부족하여 보스에게 도전할 수 없습니다. (필요 레벨: 2)" << endl;
                 system("pause");
             }
         }
