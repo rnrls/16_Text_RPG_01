@@ -267,6 +267,29 @@ void Gamemanager::goStore(Character* player) {
 
         int choice;
         cin >> choice;
+        if (cin.fail()) 
+        {
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            system("cls");
+            cout << "잘못된 입력입니다." << endl;
+            continue;
+        }
+
+        switch (choice) 
+        {
+        case1:
+            buyStore(player);
+            break;
+        case 2:
+            sellStore(player);
+            break;
+        case 3:
+            return;
+        default:
+            cout << "잘못된 입력입니다.\n";
+            break;
+        }
 
         if(choice == 1)
         {

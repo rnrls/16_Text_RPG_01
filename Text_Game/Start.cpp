@@ -68,7 +68,19 @@ bool StartGameLoop()
         cout << "메뉴를 선택하세요: ";
 
         int Choice;
-        cin >> Choice;
+        while (true) {
+            cin >> Choice;
+            if (cin.fail()) {
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                cout << "잘못된 입력입니다.: ";
+            }
+            else {
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                break;
+            }
+        }
+
 
         if (cin.fail())
         {
