@@ -68,7 +68,15 @@ bool StartGameLoop()
         int Choice;
         cin >> Choice;
 
+        if (cin.fail())
+        {
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            continue;
+        }
+
         switch (Choice) {
+           
         case 1:
             player->DisplayStatus();
             system("pause");
