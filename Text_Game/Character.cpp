@@ -116,7 +116,7 @@ int Character::GetGold() const {
 
 void Character::AddGold(int Amount) {
     Gold += Amount;
-    cout << "[Gold +" << Amount << "] ÇöÀç º¸À¯ °ñµå: " << Gold << endl;
+    cout << "[Gold +" << Amount << "] ÇöÀç °ñµå: " << Gold << endl;
 }
 
 bool Character::SpendGold(int Amount) {
