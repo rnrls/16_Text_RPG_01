@@ -93,12 +93,22 @@ void Gamemanager::Battle(Character* player, Monster* monster) {
                 cin.ignore();
                 int itemIndex = stoi(choice_exit);
                 --itemIndex;
+
+                const auto& inventory = player->GetInventory();
+                if (itemIndex < 0 || itemIndex >= inventory.size()) {
+                    cout << "잘못된 인덱스입니다.\n";
+                    system("pause");
+                    continue;
+                }
+
                 player->UseItem(itemIndex);
                 addItemUseLog();
+
+                system("pause");
             }
             continue;
-
         }
+
         else {
             cout << "잘못된 선택입니다.\n";
             continue;
