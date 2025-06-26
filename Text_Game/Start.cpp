@@ -109,8 +109,7 @@ bool StartGameLoop()
             gameManager.Battle(player, monster);
 
             if (player->isDead()) {
-                //system("pause");
-                //system("cls");
+
                 cout << "\n당신은 사냥터에서 쓰러졌습니다...\n";
                 system("pause");
                 return false;
