@@ -1,6 +1,8 @@
 #include <iostream>
 #include <string>
 #include <limits>
+#include <chrono>
+#include <thread>
 #include "Gamemanager.h"
 #include "Character.h"
 #include "Monster.h"
@@ -123,8 +125,17 @@ bool StartGameLoop()
 
                 cout << "\n축하합니다! 보스를 처치했습니다!\n";
                 system("pause");
-                exit(0);
+                system("cls");
+                cout << "===    =====   =       =======    ===    ======     ===\n";
+                cout << "===   =     =  =       =         =   =   =     =    ===\n";
+                cout << "===   =        =       ======   =======  ======     ===\n";
+                cout << "===   =     =  =       =        =     =  =    =     ===\n";
+                cout << "===    =====   ======= =======  =     =  =     =    ===\n";
+
+                cout << "\n\n === 이제 돌아가십시오. === \n\n";
+                std::this_thread::sleep_for(std::chrono::seconds(3));
                 delete boss;
+                exit(0);
             }
             else {  
                 cout << "\n레벨이 부족하여 보스에게 도전할 수 없습니다. (필요 레벨: 1)" << endl;
