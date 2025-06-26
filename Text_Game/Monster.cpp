@@ -79,7 +79,7 @@ Boss::Boss(int playerlevel) : Monster("미켈라의 칼날 말레니아", 200, 150)
 
 void Boss::corruptionSkill(Character* player)
 {
-	int skilldamage = getAttack() + 150;
+	int skilldamage = getAttack() + 50;
 	cout << "==========================================" << endl;
 	cout << "[MONSTER TURN]" << endl;
 	cout << getName() << "의 스킬 [부패] 시전!!\n";
