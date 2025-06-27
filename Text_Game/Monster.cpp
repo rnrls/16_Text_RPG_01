@@ -72,14 +72,14 @@ Manticore::Manticore(int playerlevel) : Monster("만티코어", 550 + (2 * playerlev
 
 
 
-Boss::Boss(int playerlevel) : Monster("미켈라의 칼날 말레니아", 1, 1)
+Boss::Boss(int playerlevel) : Monster("미켈라의 칼날 말레니아", 200, 1)
 {
 	cout << "몸은 금빛을 잃고, 피는 부패하니...." << "[" << getName() << "]" << "패배를 모르는 싸움을....\n";
 }
 
 void Boss::corruptionSkill(Character* player)
 {
-	int skilldamage = getAttack() + 150;
+	int skilldamage = getAttack() + 20;
 	cout << "==========================================" << endl;
 	cout << "[MONSTER TURN]" << endl;
 	cout << getName() << "의 스킬 [부패] 시전!!\n";
